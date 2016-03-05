@@ -9,7 +9,9 @@
 <link rel='stylesheet' href='resources/css/signin.css'>
 <title>TV5 Web POS - Admin</title>
 </head>
-<body>
+<body>Hello ${ username }!
+	<br/><a href="/webpos/cashier">Cashier</a><br/><a href="/webpos/products">Products</a><br/><a href="/webpos">Admin</a>
+
 
 	<div class="container">
 		<form class="form-signin" method="POST" action="addProduct">
