@@ -16,18 +16,18 @@
 			<h2 class="form-signin-heading">Point of Sale</h2>
 			<label for="inputFirstName" class="sr-only">Product Name</label> 
 			<input type="hidden" id="price" class="form-control"name="price">
-			<select class="form-control" name="inputProduct" id="inputProduct" onchange="onSelect()" >
+			<select class="form-control" name="inputProduct" id="inputProduct" onchange="onSelect(),calculatePrice()" >
 			<c:forEach items="${ productList }" var="p">	
-				<option value="${ p }">${ p.pName }</option>
+				<option value="${p.quantity}|${p.price}">${ p.pName }</option>
 				</c:forEach>
 			</select>
 			
 			<label for="quantity" class="sr-only">Quantity</label> 
-				<select id="quantity" class="form-control"onchange="calculatePrice( ${ p.quantity }"  ></select>
+				<select id="quantity" class="form-control"onchange="calculatePrice()"  ></select>
 				
 				<label for="inputPrice" class="sr-only">Price</label> 
-				<input type="text" id="inputPrice" class="form-control"
-				placeholder="Price" name="price" required="" autofocus="" disabled="true">
+				<input readonly  type="text" id="inputPrice" class="form-control"
+				placeholder="Price" name="price" required="" autofocus="" >
 				
 				
 			
@@ -47,12 +47,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${ productList }" var="p">
+				<c:forEach items="" var="p">
 					<tr>
-						<td>${ p.id }</td>
-						<td>${ p.pName }</td>
-						<td>${ p.quantity }</td>
-						<td>${ p.price }</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td><button type="button" class="btn btn-info btn-lg" onClick="editProduct('${p.id}', '${ p.pName }','${ p.quantity }','${ p.price }')">Edit</button></td>
 						<td><button type="button" class="btn btn-info btn-lg" onClick="deleteProduct('${p.id}', '${ p.pName }','${ p.quantity }','${ p.price }')">delete</button></td>
 					</tr>
@@ -61,35 +61,7 @@
 		</table>
 	</div>
 	
-	<div id="editDeleteProductModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 id="editDeleteProductModalHeader" class="modal-title">Edit/Delete Product</h4>
-				</div>
-				<div class="modal-body">
-					<form id="editDeleteProductForm" class="form-signin" method="POST" action="editDeleteProduct">
-						<input type="hidden" id="editDeleteId" class="form-control"name="id">
-						<label for="editDeleteProductName" class="sr-only">Product name</label>
-						<input type="text" id="editDeleteProductName" class="form-control" placeholder="Product name" name="pName" required="" autofocus=""> 
-						<label for="editDeletePrice" class="sr-only">Price</label> 
-						<input type="text" id="editDeletePrice" class="form-control" placeholder="Price" name="price" required="" autofocus="">
-						<label for="editDeleteQuantity" class="sr-only">Quantity</label>
-						<input type="text" id="editDeleteQuantity" class="form-control"
-							placeholder="text" name="quantity" required="">
-						<button id="btnEditDeleteProductSubmit" class="btn btn-lg btn-primary btn-block" type="submit">EditDelete</button>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-
-		</div>
-	</div>
 </body>
 <%@ include file="bottomInclude.jsp" %>
 <script type="text/javascript" src="resources/js/user.js"></script>
