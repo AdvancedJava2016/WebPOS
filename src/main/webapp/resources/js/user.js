@@ -64,19 +64,28 @@ function editProduct(id, pName,quantity, price) {
 }
 
 
-function calculatePrice(price){
-	var a = document.getElementById("quanitity").value;
-	document.getElementById("inputPrice").value = price * a;
-	
+function calculatePrice(){
+	var a = document.getElementById("quantity").value;
+	var b = document.getElementById("price").value;
+	document.getElementById("inputPrice").value = a * b;
 }
 
 
 function onSelect(p){
 	var x = document.getElementById("inputProduct").value;
-	$('#quantity').empty().append('<option selected="selected" value="0">0</option>');
+	var result = x.split('|');
+	// alert(result[0]); //quantity 
+	//$('#quantity').empty().append('<option selected="selected" value="0">0</option>');
 	var $select = $('#quantity');
-    for (i=1;i<=x.price;i++){
+    for (i=1;i<=result[0];i++){
         $select.append($('<option></option>').val(i).html(i))
     }	
-    document.getElementById("price").value = p.price;
+   // document.getElementById("inputPrice").value = result[0];
+    document.getElementById("price").value = result[1];
 }
+
+$(document).ready(function() {
+		$('#inputProduct').prepend('<option selected="selected" value="0">Select Product</option>');
+		$('#quantity').prepend('<option selected="selected" value="">Quantity</option>');
+	});
+
