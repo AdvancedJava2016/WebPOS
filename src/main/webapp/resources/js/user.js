@@ -34,3 +34,31 @@ function deleteUser(id, fName, lName, role, uName, password) {
 	$("#btnEditDeleteUserSubmit").html('Delete');
 	$('#editDeleteUserModal').modal('show');
 }
+
+function deleteProduct(id, pName,quantity, price) {
+	document.getElementById("editDeleteId").value = id;
+	document.getElementById("editDeleteProductName").value = pName;
+	document.getElementById("editDeleteProductName").disabled = true;
+	document.getElementById("editDeletePrice").value = price;
+	document.getElementById("editDeletePrice").disabled = true;
+	document.getElementById("editDeleteQuantity").value = quantity;
+	document.getElementById("editDeleteQuantity").disabled = true;
+	$("#editDeleteProductForm").attr("action", "deleteProduct");
+	$("#editDeleteProductModalHeader").html('Delete Product');
+	$("#btnEditDeleteProductSubmit").html('Delete');
+	$('#editDeleteProductModal').modal('show');
+}
+
+function editProduct(id, pName,quantity, price) {
+	document.getElementById("editDeleteId").value = id;
+	document.getElementById("editDeleteProductName").value = pName;
+	document.getElementById("editDeleteProductName").disabled = false;
+	document.getElementById("editDeletePrice").value = price;
+	document.getElementById("editDeletePrice").disabled = false;
+	document.getElementById("editDeleteQuantity").value = quantity;
+	document.getElementById("editDeleteQuantity").disabled = false;
+	$("#editDeleteProductForm").attr("action", "editProduct");
+	$("#editDeleteProductModalHeader").html('Edit Product');
+	$("#btnEditDeleteProductSubmit").html('Edit');
+	$('#editDeleteProductModal').modal('show');
+}
