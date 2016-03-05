@@ -62,3 +62,21 @@ function editProduct(id, pName,quantity, price) {
 	$("#btnEditDeleteProductSubmit").html('Edit');
 	$('#editDeleteProductModal').modal('show');
 }
+
+
+function calculatePrice(price){
+	var a = document.getElementById("quanitity").value;
+	document.getElementById("inputPrice").value = price * a;
+	
+}
+
+
+function onSelect(p){
+	var x = document.getElementById("inputProduct").value;
+	$('#quantity').empty().append('<option selected="selected" value="0">0</option>');
+	var $select = $('#quantity');
+    for (i=1;i<=x.price;i++){
+        $select.append($('<option></option>').val(i).html(i))
+    }	
+    document.getElementById("price").value = p.price;
+}

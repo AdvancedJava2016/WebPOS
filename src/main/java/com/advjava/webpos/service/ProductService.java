@@ -27,8 +27,8 @@ public class ProductService {
 		return productDao.getAllProducts();
 	}
 
-	public Product createProduct(Product p) {
-		return productDao.createProduct(p);
+	public Product addProduct(Product p) {
+		return productDao.addProduct(p);
 	}
 
 	public void deleteProduct(Integer id) {

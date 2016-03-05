@@ -13,18 +13,25 @@
 
 	<div class="container">
 		<form class="form-signin" method="POST" action="addProduct">
-			<h2 class="form-signin-heading">Add new products</h2>
-			<label for="inputFirstName" class="sr-only">Product Name</label> <input
-				type="text" id="pName" class="form-control"
-				placeholder="Product Name" name="pName" required="" autofocus="">
-			<label for="inputQuantity" class="sr-only">Quantity</label> <input
-				type="number" id="quantity" class="form-control"
-				placeholder="Quantity" name="quantity" required="" autofocus="">
-				<label for="inputPrice" class="sr-only">Price</label> <input
-				type="number" id="price" class="form-control"
-				placeholder="Price" name="price" required="" autofocus="">
+			<h2 class="form-signin-heading">Point of Sale</h2>
+			<label for="inputFirstName" class="sr-only">Product Name</label> 
+			<input type="hidden" id="price" class="form-control"name="price">
+			<select class="form-control" name="inputProduct" id="inputProduct" onchange="onSelect()" >
+			<c:forEach items="${ productList }" var="p">	
+				<option value="${ p }">${ p.pName }</option>
+				</c:forEach>
+			</select>
 			
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Add Product</button>
+			<label for="quantity" class="sr-only">Quantity</label> 
+				<select id="quantity" class="form-control"onchange="calculatePrice( ${ p.quantity }"  ></select>
+				
+				<label for="inputPrice" class="sr-only">Price</label> 
+				<input type="text" id="inputPrice" class="form-control"
+				placeholder="Price" name="price" required="" autofocus="" disabled="true">
+				
+				
+			
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Add to cart</button>
 		</form>
 	</div>
 	<div id="productList" class="container">
@@ -86,4 +93,8 @@
 </body>
 <%@ include file="bottomInclude.jsp" %>
 <script type="text/javascript" src="resources/js/user.js"></script>
+<script src="resources/js/jquery-2.2.1.js" type="text/javascript"></script>
+
+
+
 </html>

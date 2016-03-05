@@ -19,7 +19,7 @@ public class ProductDao extends AbstractDao<Product, Integer> {
 		return getAllEntities();
 	}
 
-	public Product createProduct(Product p) {
+	public Product addProduct(Product p) {
 		Integer id = create(p);
 		return getProduct(id);
 	}
