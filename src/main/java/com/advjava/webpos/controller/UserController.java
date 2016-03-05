@@ -65,6 +65,7 @@ public class UserController {
 			@RequestParam(value = "password") String password) {
 
 		User u = new User();
+		u.setId(id);
 		u.setfName(fName);
 		u.setlName(lName);
 		u.setUsername(username);
@@ -79,9 +80,9 @@ public class UserController {
 			return "adminPage";
 		}
 	}
-
-	@RequestMapping("/deleteUser/{id}")
-	public String deleteUser(ModelMap modelMap, @PathVariable Integer id) {
+	
+	@RequestMapping("/deleteUser")
+	public String deleteUser(ModelMap modelMap, @RequestParam(value = "id") Integer id) {
 		userService.deleteUser(id);
 		modelMap.put("userList", userService.getAll());
 

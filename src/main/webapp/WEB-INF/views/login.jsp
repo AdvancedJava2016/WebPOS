@@ -23,4 +23,5 @@
     </div>
     <div class="container form-signin" style="color:red">${error}</div>
 </body>
+<%@ include file="bottomInclude.jsp" %>
 </html>
