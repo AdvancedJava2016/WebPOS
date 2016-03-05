@@ -39,8 +39,7 @@
 			<tbody>
 				<c:forEach items="${ productList }" var="p">
 					<tr>
-						<td>${ p }</td>
-						<td><button onCLick="localhost:8080/webpos/deleteUser/${u.id}">delete</button></td>
+						<td>${ p.pName }</td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -6,20 +6,20 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.advjava.webpos.entity.Products;
+import com.advjava.webpos.entity.Product;
 
-@Repository(value = "productsDao")
-public class ProductsDao extends AbstractDao<Products, Integer> {
+@Repository(value = "productDao")
+public class ProductDao extends AbstractDao<Product, Integer> {
 
-	public Products getProduct(Integer id) {
+	public Product getProduct(Integer id) {
 		return getByKey(id);
 	}
 
-	public List<Products> getAll() {
+	public List<Product> getAllProducts() {
 		return getAllEntities();
 	}
 
-	public Products createProduct(Products p) {
+	public Product createProduct(Product p) {
 		Integer id = create(p);
 		return getProduct(id);
 	}
@@ -29,13 +29,13 @@ public class ProductsDao extends AbstractDao<Products, Integer> {
 		
 	}
 
-	public Products getProductByProductName(String name) {
+	public Product getProductByProductName(String name) {
 		Criteria criteria = createEntityCriteria("p");
 		criteria.add(Restrictions.eq("p.pName", name));
-		return (Products) criteria.uniqueResult();
+		return (Product) criteria.uniqueResult();
 	}
 
-	public Products updateProduct(Products p) {
+	public Product updateProduct(Product p) {
 		update(p);
 
 		return getProduct(p.getId());

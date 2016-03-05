@@ -11,8 +11,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "Products")
-public class Products implements Serializable {
+@Table(name = "Product")
+public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -61,8 +61,4 @@ public class Products implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-	
-	
-
 }
