@@ -11,6 +11,7 @@
 </head>
 <body>
 	Hello ${ username }!
+	<br/><a href="/webpos/cashier">Cashier</a><br/><a href="/webpos/products">Products</a><br/><a href="/webpos">Admin</a>
 
 	<div class="container">
 		<form class="form-signin" method="POST" action="addUser">
