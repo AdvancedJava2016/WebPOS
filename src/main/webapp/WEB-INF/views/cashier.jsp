@@ -14,7 +14,7 @@
 
 
 	<div class="container">
-		<form class="form-signin" method="POST" action="addProduct">
+		<form class="form-signin" method="" action="">
 			<h2 class="form-signin-heading">Point of Sale</h2>
 			<label for="inputFirstName" class="sr-only">Product Name</label> 
 			<input type="hidden" id="price" class="form-control"name="price">
