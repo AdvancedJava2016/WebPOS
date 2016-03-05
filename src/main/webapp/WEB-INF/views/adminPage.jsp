@@ -21,7 +21,8 @@
 			<label for="inputLastName" class="sr-only">Last name</label> <input
 				type="text" id="inputLastName" class="form-control"
 				placeholder="Last name" name="lastName" required="" autofocus="">
-			<select class="form-control" name="role">
+			<label for="inputRole" class="sr-only">Role</label>
+			<select class="form-control" name="role" id="inputRole">
 				<option value="admin">admin</option>
 				<option value="cashier">cashier</option>
 			</select> <label for="inputUsername" class="sr-only">Username</label> <input
@@ -52,11 +53,50 @@
 						<td>${ u.role }</td>
 						<td>${ u.username }</td>
 						<td>${ u.password }</td>
-						<td><button onCLick="localhost:8080/webpos/deleteUser/${u.id}">delete</button></td>
+						<td><button type="button" class="btn btn-info btn-lg" onClick="editUser(${u.id}, '${u.fName}', '${u.lName}', '${u.role}', '${u.username}', '${u.password}')">edit</button></td>
+						<td><button type="button" class="btn btn-info btn-lg" onClick="deleteUser(${u.id}, '${u.fName}', '${u.lName}', '${u.role}', '${u.username}', '${u.password}')">delete</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<div id="editDeleteUserModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 id="editDeleteUserModalHeader" class="modal-title">Edit user</h4>
+				</div>
+				<div class="modal-body">
+					<form id="editUserForm" class="form-signin" method="POST" action="editUser">
+						<input type="hidden" id="editId" class="form-control"name="id">
+						<label for="editFirstName" class="sr-only">First name</label>
+						<input type="text" id="editFirstName" class="form-control" placeholder="First name" name="firstName" required="" autofocus=""> 
+						<label for="editLastName" class="sr-only">Last name</label> 
+						<input type="text" id="editLastName" class="form-control" placeholder="Last name" name="lastName" required="" autofocus="">
+						<label for="editRole" class="sr-only">Role</label>
+						<select class="form-control" name="role" id="editRole">
+							<option value="admin">admin</option>
+							<option value="cashier">cashier</option>
+						</select> <label for="editUsername" class="sr-only">Username</label> <input
+							type="text" id="editUsername" class="form-control"
+							placeholder="Username" name="username" required="" autofocus="">
+						<label for="editPassword" class="sr-only">Password</label> <input
+							type="password" id="editPassword" class="form-control"
+							placeholder="Password" name="password" required="">
+						<button id="btnEditDeleteUserSubmit" class="btn btn-lg btn-primary btn-block" type="submit">Edit</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </body>
+<%@ include file="bottomInclude.jsp" %>
+<script type="text/javascript" src="resources/js/user.js"></script>
 </html>
