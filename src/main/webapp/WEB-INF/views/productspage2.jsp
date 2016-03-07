@@ -37,37 +37,28 @@
 		<div id="hder">
 		<div class="ui container">
 			<div class="ui middle aligned center aligned grid">
-				<a class="hddt"> POS </a>
+				<a class="hddt"> WEBPOS </a>
 			</div>	
 		</div>
 
 		</div>
 		<div id="hder2">
 		<div class="ui container">
-			<div class="ui inverted segment">
-			  <div class="ui inverted secondary pointing menu">
-				<a class="active item">
-				  Home
-				</a>
-				<a class="item">
-				  Reports
-				</a>
-				<a class="item">
-				  Products
-				</a>
-				<a class="item">
-				  Logout
-				</a>
-			  </div>
-			</div>
+			<div class="ui grid middle aligned center aligned">
+				<a class="navie"> Announcements </a>
+				<a class="navie" href="#" > Products </a>
+				<a class="navie" href="#" > Users </a>
+				<a class="navie"> Report </a>
+				<a class="navie" href="#" id="logoutbtn"> Log Out </a>
 
 			</div>	
 		</div>
 		</div>
-		<!--end of to be included-->		<!--modal start-->
+		<!--end of to be included-->
+		<!--modal start-->
 <div id="addCartmodal" class="ui modal">
 	<div class="header" style="padding-top: 16px; padding-bottom: 13px;">
-		<i class="circular yellow edit icon"
+		<i class="circular black edit icon"
 			style="margin-right: 10px;"></i>Add To Cart</div>
 		
 		<div class="content">
@@ -102,7 +93,7 @@
 				
 			<div class="ui divider"></div>
 			<div class="actions" style="float:right; margin-bottom:14px;">				   			
-				<button type="submit" class="ui yellow labeled icon button" id="saveCartbtn"><i class="add circle icon"></i> Save </button>
+				<button type="submit" class="ui black labeled icon button" id="saveCartbtn"><i class="add circle icon"></i> Save </button>
 				<button type="submit" class="ui gray labeled icon button" id="cancelCartbtn"><i class="remove circle outline icon"></i>Cancel </button>
 			</div>
 		</form>
@@ -112,14 +103,14 @@
 		<!--modal end-->
 	<div class="ui container">
 		<div class="ui middle aligned center aligned grid">
-		<a class="ui large yellow submit button aud" id="addCartbtn"><i class="add icon"></i></a>
+		<a class="ui large black submit button aud" id="addCartbtn"> Add Product to Cart</a>
 	</div>
 	</div>
 	<div class="ui top aligned center aligned grid">
 			<div class="column column2">
 				<a class="hddst"> CART </a>
 				<hr/>
-					<table class="ui striped yellow fixed single line celled table">
+					<table class="ui fixed single line celled table">
 					  <thead>
 						<tr><th>Product Name</th>
 						<th>Quantity</th>

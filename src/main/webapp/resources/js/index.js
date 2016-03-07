@@ -41,6 +41,14 @@ $('#cancelCartbtn').click(function(){
 	$('#addCartmodal').modal('hide');
 
 });	
+
+$('#loginbtn').click(function(){
+	$('#loginmodal').modal({
+		closable : true
+	})
+	$('#loginmodal').modal('show');
+});
+
 function editMod(id, fName, lName, role, uName, password){
 		$('#editUsermodal').modal({
 		closable : false

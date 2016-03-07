@@ -1,54 +1,49 @@
 #hder{
-	margin-top: -50px!important;
-	padding-top: 80px;
-	height: 150px;
+	background-color: #333;
+	padding-top: 30px;
+	height: 50px;
+
 }
 #hder2{
-	margin-top: -10px!important;
-	margin-bottom: -16px!important;
+	margin-top: -30px;
+	margin-left: 700px;
+	margin-bottom: 30px;	
+}
+.hddt{
+	margin-left: -900px;
+	font-size: 44px;
+    letter-spacing: .64286rem;
+    font-family: Oswald,Arial,Helvetica,sans-serif!important;
+	display:block;
+	color:#fff!important;
 }
 .hddst{
-	padding-top: 5px;
-	height: 30px!important;
-	background-color:#fff!important;
 	font-size: 22px;
     letter-spacing: .64286rem;
-    font-family: Verdana!important;
+    font-family: Oswald,Arial,Helvetica,sans-serif!important;
 	display:block;
 	color:#444!important;
 }
-.hddt{
-	border: 3px solid #fbbd08;
-	height: 70px;
-	padding-top: 20px;
-	font-size: 72px;
-    letter-spacing: .64286rem;
-    font-family: Verdana!important;
-	display:block;
-	color:#fbbd08!important;
-}
 body {
-  	background-color: #1b1c1d!important;
+  	background-color: #eee;
 	overflow-y: hidden;
+}
+body > .grid {
+  	height: 100%;
 }
 .column2 {
 	overflow-y: auto;
-   	max-width: 1095px;
-	height: 500px!important;
-	border: 5px solid #fff;
-	border-radius: 0px 0px 10px 10px;
-	background-color: #fff!important;
+	height: 570px;
+	border: 3px solid #333;
+   	max-width: 800px;
 }
 .aud{
-	right: -10px;
-	widght: 80%!important;
-	position: fixed;
-	bottom: 100px!important;
+	position: absolute;
+	top: 70px!important;
 	margin-left: 398px!important;
-	color: #000!important;
 }
 .aud2{
-	bottom: 150px!important;
+	top: 120px!important;
 }
 footer{
 
@@ -57,14 +52,28 @@ footer{
    bottom:0px;
    height:20px;
    width:100%;
+	background-color: #333;
 }
 footer a, footer a:hover{
 	font-size:12px;
 	position: relative;
 	bottom: -15px;
-	color:#fbbd08;
+	color:#fff;
 }
 
+.navie{
+	font-size: 14px;
+	text-transform: uppercase!important;
+	color:#fff;
+	margin-top: 5px;
+}
+.navie:hover{
+	text-transform: uppercase!important;
+	color:#bbb;
+}
+.field{
+	width: 350px!important;
+}
 table{
 max-width: 100%;
 }
@@ -79,3 +88,14 @@ td {
 .pricenames{
 	margin-left: -600px!important;
 }*/
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+
+::-webkit-scrollbar-thumb {
+	background-color: #333!important
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
+}

@@ -21,7 +21,7 @@
 
 	
 	  	<!-- Site Properities -->
-	  	<title>Products Page</title>
+	  	<title>Reports</title>
 		
 	  	<link rel="icon" type="image/png" href="" />
 		<link rel="stylesheet" href="css/dist/semantic.css">
@@ -37,29 +37,19 @@
 		<div id="hder">
 		<div class="ui container">
 			<div class="ui middle aligned center aligned grid">
-				<a class="hddt"> POS </a>
+				<a class="hddt"> WEBPOS </a>
 			</div>	
 		</div>
 
 		</div>
 		<div id="hder2">
 		<div class="ui container">
-			<div class="ui inverted segment">
-			  <div class="ui inverted secondary pointing menu">
-				<a class="active item">
-				  Home
-				</a>
-				<a class="item">
-				  Reports
-				</a>
-				<a class="item">
-				  Products
-				</a>
-				<a class="item">
-				  Logout
-				</a>
-			  </div>
-			</div>
+			<div class="ui grid middle aligned center aligned">
+				<a class="navie"> Announcements </a>
+				<a class="navie" href="#" > Products </a>
+				<a class="navie" href="#" > Users </a>
+				<a class="navie"> Report </a>
+				<a class="navie" href="#" id="logoutbtn"> Log Out </a>
 
 			</div>	
 		</div>
@@ -114,8 +104,8 @@
 
 	<div class="ui container">
 		<div class="ui middle aligned center aligned grid">
-		<a class="ui large yellow submit button aud" id="prodsalesbtn"> Product Sales </a>
-		<a class="ui large yellow submit button aud aud2" id="cashsalesbtn"> Cashier Sales </a>
+		<a class="ui large black submit button aud" id="prodsalesbtn"> Product Sales </a>
+		<a class="ui large black submit button aud aud2" id="cashsalesbtn"> Cashier Sales </a>
 	</div>
 	</div>
 	<div class="ui top aligned center aligned grid">
@@ -123,7 +113,7 @@
 			<div id="productsales">
 				<a class="hddst"> PRODUCT SALES </a>
 				<hr/>
-					<table class="ui striped yellow fixed single line celled table">
+					<table class="ui fixed single line celled table">
 					  <thead>
 						<tr><th>Product Name</th>
 						<th>Quantity</th>
@@ -159,7 +149,7 @@
 				<div class="labelnames">
 							<b>DATE</b>
 				</div>
-					<table class="ui striped yellow fixed single line celled table">
+					<table class="ui fixed single line celled table">
 					  <thead>
 						<tr><th>Cashier Name</th>
 						<th>Total Income</th>
