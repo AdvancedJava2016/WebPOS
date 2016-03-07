@@ -7,10 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="topInclude.jsp"%>
 <link rel='stylesheet' href='resources/css/signin.css'>
-<title>IWC Web POS - Admin</title>
+<title>TV5 Web POS - Admin</title>
 </head>
 <body>
 	Hello ${ username }!
+	<br/><a href="/webpos/cashier">Cashier</a><br/><a href="/webpos/products">Products</a><br/><a href="/webpos">Admin</a>
 
 	<div class="container">
 		<form class="form-signin" method="POST" action="addUser">
@@ -86,7 +87,7 @@
 						<label for="editPassword" class="sr-only">Password</label> <input
 							type="password" id="editPassword" class="form-control"
 							placeholder="Password" name="password" required="">
-						<button id="btnEditDeleteUserSubmit" class="btn btn-lg btn-primary btn-block" type="submit">Edit</button>
+						<button id="btnEditDeleteUserSubmit" class="btn btn-lg btn-primary btn-block" type="submit">sEdit</button>
 					</form>
 				</div>
 				<div class="modal-footer">
