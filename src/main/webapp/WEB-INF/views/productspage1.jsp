@@ -72,13 +72,13 @@
 			style="margin-right: 10px;"></i>New Product</div>
 		
 		<div class="content">
-			<form name="addProdForm" class="ui form" id="addProdForm">
+			<form name="addProdForm" class="ui form" id="addProdForm" method="POST" action="addProduct">
     			<div class="inline fields">
 						<div class="two wide field">
 							<label>Product Name</label>
 						</div>
 						<div class="fourteen wide field">
-				            <input type="text" name="productname" id="productname" required="true"/>
+				            <input type="text" name="pName" id="productname" required="true"/>
 						</div>
 				</div>
 
@@ -87,7 +87,7 @@
 							<label>Quantity</label>
 						</div>
 						<div class="fourteen wide field">
-				            <input type="number" name="prodqty" id="prodqty" required="true"/>
+				            <input type="number" name="quantity" id="prodqty" required="true"/>
 						</div>
 				</div>
 
@@ -96,7 +96,7 @@
 							<label>Price</label>
 						</div>
 						<div class="fourteen wide field">
-				            <input type="number" id="prodprice" name="prodprice" required="true"/>
+				            <input type="number" id="prodprice" name="price" required="true"/>
 						</div>
 
 				</div>
