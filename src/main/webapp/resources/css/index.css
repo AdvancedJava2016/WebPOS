@@ -1,0 +1,40 @@
+#hder{
+	padding-top: 80px;
+	height: 150px;
+	margin-bottom: 30px;
+}
+
+.hddt{
+	border: 3px solid #fbbd08;
+	height: 70px;
+	padding-top: 20px;
+	font-size: 72px;
+    letter-spacing: .64286rem;
+    font-family: Verdana!important;
+	display:block;
+	color:#fbbd08!important;
+}
+body {
+  	background-color: #1b1c1d!important;
+	overflow-y: hidden;
+}
+body > .grid {
+  	height: 100%;
+}
+footer{
+
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:20px;
+   width:100%;
+}
+footer a, footer a:hover{
+	font-size:12px;
+	position: relative;
+	bottom: -15px;
+	color:#fbbd08;
+}
+.field{
+	width: 360px!important;
+}

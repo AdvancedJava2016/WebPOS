@@ -29,7 +29,7 @@ public class UserController {
 		if (userService.checkCredentials(username, password) != null) {
 			modelMap.put("username", username);
 			modelMap.put("userList", userService.getAll());
-			return "adminPage";
+			return "adminpage";
 		} else {
 			modelMap.put("error", "Invalid UserName / Password");
 			return "login";
