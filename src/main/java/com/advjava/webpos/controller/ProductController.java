@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.advjava.webpos.entity.Product;
-import com.advjava.webpos.entity.User;
 import com.advjava.webpos.service.ProductService;
 
 @Controller
