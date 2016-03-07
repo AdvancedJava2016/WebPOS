@@ -9,25 +9,25 @@
 <title>Admin</title>
 
 <link rel="stylesheet" type="text/css" href="resources/js/semantic.css">
+<link rel="stylesheet" type="text/css" href="resources/js/custom.css">
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/jquery-ui.min.js"></script>
 <script src="resources/js/semantic.js"></script>
-
 <style>
-a.purple {
-	color: #75005e !important;
-}
 </style>
 </head>
 
-<body style="background-color: #ebebeb;">
-	<div class="ui inverted menu">
+<body>
+	<div class="ui blue inverted menu">
+		<h4 class="item" style="margin-bottom: 0px !important;">
+			<b>WEBPOS</b>
+		</h4>
 		<div class="right menu">
-			<a class="item" href="logout">Log Out</a>
+			<a class="item">Log Out</a>
 		</div>
 	</div>
 	<div class="ui grid very padded relaxed stackable grid">
-		<div class="five wide column">
+		<div class="ui basic modal" id="add">
 			<div style="width: 80%;"
 				class="ui piled very padded text container segment">
 				<form class="ui form" action="addUser" method="POST">
@@ -39,7 +39,7 @@ a.purple {
 					</div>
 					<div class="field">
 						<label>Role</label> <select name="role" class="ui dropdown">
-							<option value="admin">Admin</option>
+							<option value="admin">Administrator</option>
 							<option value="cashier">Cashier</option>
 						</select>
 					</div>
@@ -49,17 +49,25 @@ a.purple {
 					<div class="field">
 						<label>Password</label> <input type="password" name="password">
 					</div>
-					<button class="ui purple fluid center aligned labeled icon button" type="submit"><i class="add user icon"></i>Add
-						New User</button>
-			</form>
+					<button class="ui right floated labeled icon button">
+						<i class="cancel icon"></i>Cancel
+					</button>
+					<button class="ui blue right floated labeled icon button"
+						type="submit">
+						<i class="add user icon"></i>Add New User
+					</button>
+				</form>
 			</div>
 		</div>
-		<div class="ui vertical divider"><i class="star icon"></i></div>
-		<div class="eleven wide column" style="">
-			<h3 class="ui center aligned icon header">
-				<i class="circular inverted users icon"></i>
-			</h3>
-			<table class="ui black fixed padded very piled raised celled table">
+		<div class="three wide column"></div>
+		<div class="ten wide column">
+			<div style="margin-bottom: 10px !important;">
+				<button class="divfix circular ui massive activating element blue icon button" data-content="Add New User" data-variation="basic" onclick="addUser()">
+					<i class="icon add user"></i>
+				</button>
+			</div>
+
+			<table class="ui fixed padded blue very piled raised celled table">
 				<thead>
 					<tr>
 						<th>First Name</th>
@@ -71,12 +79,12 @@ a.purple {
 				</thead>
 				<tbody>
 					<c:forEach items="${ userList }" var="u">
-						<tr onClick="editUserModal('${ u.id }', '${ u.fName }', '${ u.lName }', '${ u.role }', '${ u.username }', '${ u.password }')">
-							<td>${ u.fName }</td>
-							<td>${ u.lName }</td>
-							<td>${ u.username }</td>
-							<td>${ u.password }</td>
-							<td>${ u.role }</td>
+						<tr>
+							<td><a class="ui brown" href="#" onClick="editUserModal('${ u.id }', '${ u.fName }', '${ u.lName }', '${ u.role }', '${ u.username }', '${ u.password }')">${ u.fName }</a></td>
+								<td>${ u.lName }</td>
+								<td>${ u.username }</td>
+								<td>${ u.password }</td>
+								<td>${ u.role }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -103,32 +111,33 @@ a.purple {
 			class="ui piled very padded text container segment">
 			<form class="ui form" id="editUserForm" action="editUser" method="POST">
 				<div class="field">
-					<label>ID</label> <input type="text" id="eID" name="id">
+						<label>ID</label> <input type="text" name="id" id="eID">
+					</div>
+				<div class="field">
+					<label>First Name</label> <input type="text" name="firstName" id="efname">
 				</div>
 				<div class="field">
-					<label>First Name</label> <input type="text" id="efname" name="firstName">
+					<label>Last Name</label> <input type="text" name="lastName" id="elname">
 				</div>
 				<div class="field">
-					<label>Last Name</label> <input type="text" id="elname" name="lastName">
-				</div>
-				<div class="field">
-					<label>Role</label> <select name="role" id="erole"class="">
-						<option value="admin">admin</option>
-						<option value="cashier">cashier</option>
+					<label>Role</label> <select name="role" id="erole"class="ui">
+						<option value="">---</option>
+						<option value="admin">Administrator</option>
+						<option value="cashier">Cashier</option>
 					</select>
 				</div>
 				<div class="field">
-					<label>Username</label> <input type="text" id="eusername" name="username">
+					<label>Username</label> <input type="text" name="username" id="eusername">
 				</div>
 				<div class="field">
-					<label>Password</label> <input type="password" id="epassword" name="password">
+					<label>Password</label> <input type="password" name="password" id="epassword">
 				</div>
 				<div class="actions">
-			<div class="ui gray right labeled icon">
-				<button onClick="deleteUser()" type="submit">Delete User</button> <i class="trash icon"></i>
+			<div class="ui gray right labeled icon button"><button type="submit" onClick="deleteUser()">
+				Delete User <i class="trash icon"></i></button>
 			</div>
-			<div class="ui purple right labeled icon">
-				<button type="submit">Save</button> <i class="checkmark icon"></i>
+			<div class="ui purple right labeled icon"><button type="submit">
+				Save <i class="checkmark icon"></i></button>
 			</div>
 			<div class="ui black deny button">Cancel</div>
 		</div>
@@ -137,10 +146,7 @@ a.purple {
 		
 	</div>
 </body>
-<script src="resources/js/user.js"></script>
-<script>
-	$('.ui.dropdown').dropdown();
 
-	
-</script>
+<script src="resources/js/main.js"></script>
+<script src="resources/js/user.js"></script>
 </html>

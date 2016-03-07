@@ -7,28 +7,41 @@
 <title>Products</title>
 
 <link rel="stylesheet" type="text/css" href="js/semantic.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/semantic.js"></script>
+<link rel="stylesheet" type="text/css" href="js/custom.css">
 
 <style>
 </style>
 </head>
 
-<body style="background-color: #ebebeb;">
-	<div class="ui inverted menu">
+<body>
+	<div class="ui blue inverted menu">
+		<h4 class="green item" style="margin-bottom: 0px !important;">
+			<b>WEBPOS</b>
+		</h4>
 		<div class="right menu">
-		<a class="active purple item"><i class="cubes icon"></i>Products</a>
-			<a class="item"><i class="cart icon"></i>Cart</a>
 			<a class="item">Log Out</a>
 		</div>
 	</div>
-	<div class="ui grid very padded relaxed stackable grid">
-		<div class="eleven wide column" style="">
-			<h3 class="ui purple center aligned icon header">
-				<i class="circular cubes icon"></i>
-			</h3>
-			<table class="ui black fixed padded very piled raised celled table">
+	<div class="ui grid padded">
+
+		<!-- TOP BUTTONS -->
+		<div>
+			<div class="ui blue labeled icon pointing menu">
+				<a id="prb" class="active item"><i class="cubes icon"
+					onclick="showProducts()"></i> Products</a> <a id="crb" class="item"><i
+					class="cart icon" onclick="showCart()"></i> Cart</a>
+				<div class="right menu"
+					style="position: absolute !important; right: 15px;">
+					<a id="addPrB" class="item"><i class="add icon"
+						onclick="addProd()"></i> Add New Product</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- MANAGE PRODUCTS -->
+		<div id="products">
+			<table class="ui black fixed padded very piled raised celled table"
+				style="margin-top: 15px;">
 				<thead>
 					<tr>
 						<th>Product Name</th>
@@ -52,42 +65,128 @@
 						<td>29</td>
 						<td>P 4,900.00</td>
 				</tbody>
-				<!-- <tfoot>
-					<tr>
-						<th colspan="3">
-							<div class="ui right floated pagination menu">
-								<a class="icon item"> <i class="left chevron icon"></i>
-								</a> <a class="item">1</a> <a class="item">2</a> <a class="item">3</a>
-								<a class="item">4</a> <a class="icon item"> <i
-									class="right chevron icon"></i>
-								</a>
-							</div>
-						</th>
-					</tr>
-				</tfoot> -->
 			</table>
 		</div>
-		<div class="ui vertical divider"></div>
-		<div class="five wide column">
-			<div style="width: 80%; margin-top:60px;"
-				class="ui piled very padded text container segment">
-				<form class="ui form">
-					<div class="field">
-						<label>Product Name</label> <input type="text" name="first-name">
+		
+		<!-- CART -->
+		<div id="cart" hidden>
+			<table class="ui black fixed padded very piled raised celled table"
+				style="margin-top: 15px;">
+				<thead>
+					<tr>
+						<th>Product Name</th>
+						<th>Quantity</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>ASUS Zenfone 2 ZE551ML 4/64</td>
+						<td>1</td>
+						<td>P 14,995.00</td>
+					</tr>
+					<tr>
+						<td>iPhone 6s Plus 16GB (Rose Gold)</td>
+						<td>1</td>
+						<td>P 43,990.00</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="2"><b>TOTAL:</b></th>
+						<th colspan="1"><b>P 500,000.00</b></th>
+					</tr>
+
+				</tfoot>
+			</table>
+			
+			<!-- ADD ITEMS TO CART -->
+			<div class="ui container segment"
+				style="padding: 15px !important; width:70%">
+				<div class="ui form">
+					<div class="four fields">
+						<div class="field">
+							<label>Product Name</label><select class="ui dropdown">
+								<option value="">---</option>
+								<option value="1">Pizza</option>
+								<option value="0">Water</option>
+								<option value="1">Milktea</option>
+								<option value="0">Table</option>
+							</select>
+						</div>
+						<div class="field">
+							<label>Quantity</label> <input type="number">
+						</div>
+						<div class="field">
+							<label>Price</label> <input type="text">
+						</div>
+						<div class="field">
+							<button class="ui gray fluid center aligned labeled icon button"
+								type="submit">
+								<i class="add to cart icon"></i>Add To Cart
+							</button>
+							<button class="ui blue fluid center aligned labeled icon button"
+								type="submit" style="margin-top: 5px !important"
+								onclick="checkout()">
+								<i class="money icon"></i>Checkout
+							</button>
+						</div>
 					</div>
-					<div class="field">
-						<label>Quantity</label> <input type="number" name="last-name">
-					</div>
-					<div class="field">
-						<label>Price</label> <input type="text" name="password">
-					</div>
-					<button class="ui purple fluid center aligned labeled icon button" type="submit"><i class="add icon"></i>Add
-						New Product</button>
-				</form>
+				</div>
 			</div>
-		</div>	
+			<!-- END ADD TO CART MODAL -->
+			
+			<!-- CHECKOUT MODAL -->
+			<div id="checkout" class="ui basic small modal">
+				<div style="width: 50%"
+					class="ui piled very padded text container segment">
+					<form class="ui form">
+						<div class="field">
+							<label>Cash</label> <input type="text" id="pName">
+						</div>
+						<div class="field">
+							<label>Change</label> <input type="number" disabled>
+						</div>
+						<button class="ui blue fluid center aligned labeled icon button"
+							type="submit">
+							<i class="add icon"></i>Checkout
+						</button>
+					</form>
+				</div>
+			</div>
+			<!-- END CHECKOUT MODAL -->
+			
+		</div>
+	</div>
+
+	<!-- ADD PRODUCT MODAL -->
+	<div id="addProd" class="ui basic small modal">
+		<div style="width: 50%"
+			class="ui piled very padded text container segment">
+			<form class="ui form">
+				<div class="field">
+					<label>Product Name</label> <input type="text" id="pName"
+						name="first-name">
+				</div>
+				<div class="field">
+					<label>Quantity</label> <input type="number" name="last-name">
+				</div>
+				<div class="field">
+					<label>Price</label> <input type="text" name="password">
+				</div>
+				<button class="ui blue fluid center aligned labeled icon button"
+					type="submit">
+					<i class="add icon"></i>Add New Product
+				</button>
+			</form>
+		</div>
 	</div>
 </body>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/semantic.js"></script>
+<script src="js/main.js"></script>
 <script>
 	$('.ui.dropdown').dropdown();
 

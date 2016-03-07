@@ -7,26 +7,27 @@
 <title>Log IN</title>
 
 <link rel="stylesheet" type="text/css" href="resources/js/semantic.css">
+<link rel="stylesheet" type="text/css" href="resources/js/custom.css">
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/jquery-ui.min.js"></script>
 <script src="resources/js/semantic.js"></script>
-
+<script src="resources/js/main.js"></script>
 <style>
 </style>
 </head>
 
-<body>
-	<div style="width: 30%; margin-top: 100px;"
-		class="ui piled very padded text container segment">
-		<form class="ui form" method="POST" action="login">
-			<div class="field">
-				<label>Username</label> <input type="text" name="username">
+<body style="background-color:#00042b!important">
+	<div style="width: 20%; margin-top: 100px;"
+		class="ui container">
+		<form class="ui form" action="login" method="POST">
+			<div class="ui left icon padded fluid input">
+				<input type="text" id="inputUsername" placeholder="Username"name="username"> <i class="user icon"></i>
 			</div>
-			<div class="field">
-				<label>Password</label> <input type="text" name="password">
+			<div class="ui left icon padded fluid input">
+				<input type="password" id="inputPassword" placeholder="Password" name="password"> <i
+					class="lock icon"></i>
 			</div>
-
-			<button class="ui fluid purple button" type="submit">Log In</button>
+			<button class="ui fluid blue button" type="submit">Log In</button>
 		</form>
 	</div>
 

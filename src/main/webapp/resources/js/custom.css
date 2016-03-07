@@ -1,0 +1,31 @@
+body {
+	background-color: #d9f1ff;
+}
+
+body.padded {
+	padding: 30px !important;
+}
+
+label.inverted {
+	color: #ffffff !important;
+}
+
+.padded.input {
+	margin-bottom: 15px !important;
+}
+
+.center {
+	margin: auto !important;
+}
+
+a.brown {
+	color: #0277bd !important;
+}
+
+.divfix {
+	bottom: 0;
+	right: 0;
+	margin:100px!important;
+	position: fixed;
+	z-index: 3000;
+}
