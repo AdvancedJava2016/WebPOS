@@ -193,7 +193,7 @@
 				</div>
 			<div class="ui divider"></div>
 			<div class="actions" style="float:right; margin-bottom:14px;">				   			
-				<button type="submit" class="ui black labeled icon button" id="edeleteUserbtn"><i class="" onClick="deleteUser()"></i> Delete </button>
+				<button type="submit" class="ui black labeled icon button" id="edeleteUserbtn" onClick="deleteUser()"><i class=""></i> Delete </button>
 				<button type="submit" class="ui black labeled icon button" id="esaveUserbtn"><i class="add circle icon"></i> Save </button>
 				<button type="reset" class="ui gray labeled icon button" id="ecancelUserbtn"><i class="remove circle outline icon"></i>Cancel </button>
 			</div>

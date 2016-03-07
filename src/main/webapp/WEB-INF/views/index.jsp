@@ -1,4 +1,3 @@
-   
 <!-- 
 /* -------------------------------------------------------------------------
  * Unauthorized copying of this file, via any medium is strictly prohibited
@@ -54,7 +53,7 @@
 		<div class="header" style="padding-top: 16px; padding-bottom: 13px;">
 		     LOGIN
 		</div>
-		<form action="login" method="POST">
+		<form action="login" method="GET">
 		<div class="content">
    			<div class="ui stacked segment">
        			<div class="inline field">

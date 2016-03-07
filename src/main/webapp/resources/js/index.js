@@ -52,7 +52,7 @@ $('#loginbtn').click(function(){
 function editMod(id, fName, lName, role, uName, password){
 		$('#editUsermodal').modal({
 		closable : false
-	})
+	});
 	document.getElementById("eID").value = id;
 	document.getElementById("efname").value = fName;
 	document.getElementById("elname").value = lName;
@@ -65,6 +65,7 @@ function editMod(id, fName, lName, role, uName, password){
 
 function deleteUser() {
 	$("#editUserForm").attr("action", "deleteUser");
+	
 }
 
 $('#ecancelUserbtn').click(function(){

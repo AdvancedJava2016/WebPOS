@@ -73,7 +73,7 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping("/deleteUser")
+	@RequestMapping(value = "/deleteUser", method = { RequestMethod.POST })
 	public String deleteUser(ModelMap modelMap, @RequestParam(value = "id") Integer id) {
 		userService.deleteUser(id);
 		modelMap.put("userList", userService.getAll());
