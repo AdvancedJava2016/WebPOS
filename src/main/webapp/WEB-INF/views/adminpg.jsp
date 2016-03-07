@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!doctype html>
 <html>
 <head>
@@ -101,15 +103,18 @@ a.purple {
 			class="ui piled very padded text container segment">
 			<form class="ui form" id="editUserForm" action="editUser" method="POST">
 				<div class="field">
+					<label>ID</label> <input type="text" id="eID" name="id">
+				</div>
+				<div class="field">
 					<label>First Name</label> <input type="text" id="efname" name="firstName">
 				</div>
 				<div class="field">
 					<label>Last Name</label> <input type="text" id="elname" name="lastName">
 				</div>
 				<div class="field">
-					<label>Role</label> <select name="role" id="erole"class="ui dropdown">
-						<option value="admin">Administrator</option>
-						<option value="cashier">Cashier</option>
+					<label>Role</label> <select name="role" id="erole"class="">
+						<option value="admin">admin</option>
+						<option value="cashier">cashier</option>
 					</select>
 				</div>
 				<div class="field">
@@ -118,17 +123,18 @@ a.purple {
 				<div class="field">
 					<label>Password</label> <input type="password" id="epassword" name="password">
 				</div>
-			</form>
-		</div>
-		<div class="actions">
-			<div class="ui gray right labeled icon button">
-				Delete User <i class="trash icon"></i>
+				<div class="actions">
+			<div class="ui gray right labeled icon">
+				<button onClick="deleteUser()" type="submit">Delete User</button> <i class="trash icon"></i>
 			</div>
-			<div class="ui purple right labeled icon button">
-				Save <i class="checkmark icon"></i>
+			<div class="ui purple right labeled icon">
+				<button type="submit">Save</button> <i class="checkmark icon"></i>
 			</div>
 			<div class="ui black deny button">Cancel</div>
 		</div>
+			</form>
+		</div>
+		
 	</div>
 </body>
 <script src="resources/js/user.js"></script>
