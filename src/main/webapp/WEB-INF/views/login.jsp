@@ -1,27 +1,33 @@
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ include file="topInclude.jsp" %>
-<link rel='stylesheet' href='resources/css/signin.css'>
-<title>IWC Web POS - login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@ include file="header.jsp"%>
+<title>POS</title>
 </head>
 <body>
-
 	<div class="container">
-      <form class="form-signin" method="POST" action="login">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required="" autofocus="">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required="">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-    </div>
-    <div class="container form-signin" style="color:red">${error}</div>
+		<div class="row">
+			<div class="col-xs-8">
+				<h2>Announcements here!</h2>
+			</div>
+			<div class="col-xs-4">
+				<h2>Log in here</h2>
+				<form method="POST" action="login">
+					<div class="form-group">
+						<label for="username">Username</label> 
+						<input type="text" class="form-control" name="username" id="username" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<label for="pw">Password</label> <input type="password" name="password" class="form-control" id="pw" placeholder="Password">
+					</div>
+					<button type="submit" class="btn btn-info">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<%@ include file="footer.jsp"%>
 </body>
-<%@ include file="bottomInclude.jsp" %>
 </html>
