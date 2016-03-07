@@ -175,8 +175,8 @@
 					<div class="fourteen wide field">
 						<select class="ui dropdown" name="role" id="erole">
 							<option value=""></option>
-							<option value="admin">Admin</option>
-							<option value="cashier">Cashier</option>
+							<option value="admin">admin</option>
+							<option value="cashier">cashier</option>
 						</select>
 					</div>
 
