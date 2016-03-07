@@ -98,6 +98,6 @@ public class UserController {
 	@RequestMapping("/logout")
 	public String logout() {
 
-		return "index";
+		return "login";
 	}
 }
