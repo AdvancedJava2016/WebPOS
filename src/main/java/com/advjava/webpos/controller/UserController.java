@@ -16,14 +16,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	// @RequestMapping(value="/login", method = RequestMethod.GET)
-	// public String checkCredentials(Model model) {
-	// model.addAttribute("message", "Hello World! Login Controller!");
-	//
-	// return "login";
-	// }
-
-	@RequestMapping(value = "/login", method = { RequestMethod.POST })
+	@RequestMapping(value = "/login", method = { RequestMethod.GET })
 	public String checkCredentials(ModelMap modelMap, @RequestParam(value = "username") String username,
 			@RequestParam(value = "password") String password) {
 		if (userService.checkCredentials(username, password) != null) {
@@ -37,8 +30,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/addUser", method = { RequestMethod.POST })
-	public String addUser(ModelMap modelMap, @RequestParam(value = "firstName") String fName,
-			@RequestParam(value = "lastName") String lName, @RequestParam(value = "role") String role,
+	public String addUser(ModelMap modelMap, @RequestParam(value = "fName") String fName,
+			@RequestParam(value = "lName") String lName, @RequestParam(value = "role") String role,
 			@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
 
 		User u = new User();
@@ -50,10 +43,10 @@ public class UserController {
 
 		if (userService.createUser(u) != null) {
 			modelMap.put("userList", userService.getAll());
-			return "adminPage";
+			return "adminpage";
 		} else {
 			modelMap.put("error", "Unsucessfully created new user");
-			return "adminPage";
+			return "adminpage";
 		}
 	}
 
@@ -73,10 +66,10 @@ public class UserController {
 
 		if (userService.updateUser(u) != null) {
 			modelMap.put("userList", userService.getAll());
-			return "adminPage";
+			return "adminpage";
 		} else {
 			modelMap.put("error", "Unsucessfully edited user");
-			return "adminPage";
+			return "adminpage";
 		}
 	}
 	
@@ -85,6 +78,17 @@ public class UserController {
 		userService.deleteUser(id);
 		modelMap.put("userList", userService.getAll());
 
-		return "adminPage";
+		return "adminpage";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout() {
+		return "index";
+	}
+	
+	@RequestMapping("/adminPage")
+	public String adminPageRedirect(ModelMap modelMap) {
+		modelMap.put("userList", userService.getAll());
+		return "adminpage";
 	}
 }

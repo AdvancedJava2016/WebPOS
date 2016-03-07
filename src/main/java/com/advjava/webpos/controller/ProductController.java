@@ -23,7 +23,7 @@ public class ProductController {
 	public String retrieveList(ModelMap modelMap) {
 		
 		modelMap.put("productList", productService.getAllProducts());
-		return "manageProducts";
+		return "productspage1";
 	}
 	
 	@RequestMapping(value = "/cashier", method = RequestMethod.GET)
@@ -37,7 +37,7 @@ public class ProductController {
 	public String deleteProduct(ModelMap modelMap, @RequestParam(value = "id") Integer id) {
 		productService.deleteProduct(id);
 		modelMap.put("productList", productService.getAllProducts());
-		return "manageProducts";
+		return "productspage1";
 	}
 	
 	@RequestMapping("/editProduct")
@@ -55,10 +55,10 @@ public class ProductController {
 		
 		if (productService.updateProduct(p) != null) {
 			modelMap.put("productList", productService.getAllProducts());
-			return "manageProducts";
+			return "productspage1";
 		} else {
 			modelMap.put("error", "Edit Product Failed!");
-			return "manageProducts";
+			return "productspage1";
 		}
 		
 	}
@@ -77,10 +77,10 @@ public class ProductController {
 
 		if (productService.addProduct(p) != null) {
 			modelMap.put("productList", productService.getAllProducts());
-			return "manageProducts";
+			return "productspage1";
 		} else {
 			modelMap.put("error", "Edit Product Failed!");
-			return "manageProducts";
+			return "productspage1";
 		}
 	}
 	

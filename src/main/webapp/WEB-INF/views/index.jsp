@@ -45,7 +45,7 @@
 		<!--end of to be included-->
 
 	<div class="ui top aligned center aligned grid">
-		<form action="login" method="POST">
+		<form action="login" method="GET">
 		<div class="content" >
    			<div class="ui stacked segment">
        			<div class="inline field">
@@ -78,7 +78,7 @@
 	</body>
 	<footer>		
 		<div class="ui middle aligned center aligned grid">
-			<a>lalalaunicorn random designs daw kunohay hahah</a>
+			<a></a>
 		</div>
 
 	</footer>

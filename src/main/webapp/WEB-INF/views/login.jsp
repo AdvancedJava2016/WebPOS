@@ -12,7 +12,7 @@
 <body>
 
 	<div class="container">
-      <form class="form-signin" method="POST" action="login">
+      <form class="form-signin" method="GET" action="login">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputUsername" class="sr-only">Username</label>
         <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required="" autofocus="">

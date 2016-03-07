@@ -1,23 +1,14 @@
-function editUser(id, fName, lName, role, uName, password) {
-	document.getElementById("editId").value = id;
-	document.getElementById("editId").disabled = false;
-	document.getElementById("editFirstName").value = fName;
-	document.getElementById("editFirstName").disabled = false;
+function editsUser(id, fName, lName, role, uName, password) {
+	document.getElementById("eID").value = id;
+	document.getElementById("efame").value = fName;
 	document.getElementById("editLastName").value = lName;
-	document.getElementById("editLastName").disabled = false;
-	document.getElementById("editRole").value = role;
-	document.getElementById("editRole").disabled = false;
-	document.getElementById("editUsername").value = uName;
-	document.getElementById("editUsername").disabled = false;
-	document.getElementById("editPassword").value = password;
-	document.getElementById("editPassword").disabled = false;
+	document.getElementById("erole").value = role;
+	document.getElementById("eusername").value = uName;
+	document.getElementById("epassword").value = password;
 	$("#editUserForm").attr("action", "editUser");
-	$("#editDeleteUserModalHeader").html('Edit user');
-	$("#btnEditDeleteUserSubmit").html('Edit');
-	$('#editDeleteUserModal').modal('show');
 }
 
-function deleteUser(id, fName, lName, role, uName, password) {
+function deletesUser(id, fName, lName, role, uName, password) {
 	document.getElementById("editId").value = id;
 	document.getElementById("editFirstName").value = fName;
 	document.getElementById("editFirstName").disabled = true;

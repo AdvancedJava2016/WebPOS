@@ -6,7 +6,7 @@
  * Copyright (C) Moneytor
  * -------------------------------------------------------------------------
  -->
- 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,9 +24,9 @@
 	  	<title>Products Page</title>
 		
 	  	<link rel="icon" type="image/png" href="" />
-		<link rel="stylesheet" href="css/dist/semantic.css">
-		<link rel="stylesheet" href="css/normal.css">
-		<link rel="stylesheet" href="css/dist/semantic.min.css">
+		<link rel="stylesheet" href="resources/css/dist/semantic.css">
+		<link rel="stylesheet" href="resources/css/normal.css">
+		<link rel="stylesheet" href="resources/css/dist/semantic.min.css">
 
 
 		
@@ -46,16 +46,16 @@
 		<div class="ui container">
 			<div class="ui inverted segment">
 			  <div class="ui inverted secondary pointing menu">
-				<a class="active item">
+				<a class="item" href="adminPage">
 				  Home
 				</a>
-				<a class="item">
+				<a class="item" href="reports">
 				  Reports
 				</a>
-				<a class="item">
+				<a class="active item" href="#">
 				  Products
 				</a>
-				<a class="item">
+				<a class="item" href="logout">
 				  Logout
 				</a>
 			  </div>
@@ -127,71 +127,27 @@
 						<th>Price</th>
 						</tr></thead>
 					  <tbody>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-
-						<tr>
-						  <td>John</td>
-						  <td>Doe</td>
-						  <td>johndoe</td>
-					    </tr>
-						<tr>
-						  <td>John</td>
-						  <td>Doe</td>
-						  <td>johndoe</td>
-						</tr>
+						<c:forEach items="${ productList }" var="p">
+							<tr>
+								<td>${ p.pName }</td>
+								<td>${ p.quantity }</td>
+								<td>${ p.price }</td>
+							</tr>
+						</c:forEach>
 					  </tbody>
 					</table>				
 			</div>	
 		</div>
 
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery-ui.min.js"></script>
-		<script src="css/dist/semantic.js"></script>
-		<script src="css/dist/semantic.min.js"></script>
-		<script src="js/index.js"></script>
+		<script src="resources/js/jquery.min.js"></script>
+		<script src="resources/js/jquery-ui.min.js"></script>
+		<script src="resources/css/dist/semantic.js"></script>
+		<script src="resources/css/dist/semantic.min.js"></script>
+		<script src="resources/js/index.js"></script>
 	</body>
 	<footer>		
 		<div class="ui middle aligned center aligned grid">
-			<a>copyright SY:2015-2016 second semester Advance Java</a>
+			<a></a>
 		</div>
 
 	</footer>

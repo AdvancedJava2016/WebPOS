@@ -41,12 +41,24 @@ $('#cancelCartbtn').click(function(){
 	$('#addCartmodal').modal('hide');
 
 });	
-function editMod(){
+function editMod(id, fName, lName, role, uName, password){
 		$('#editUsermodal').modal({
 		closable : false
 	})
+	document.getElementById("eID").value = id;
+	document.getElementById("efname").value = fName;
+	document.getElementById("elname").value = lName;
+	document.getElementById("erole").value = role;
+	document.getElementById("eusername").value = uName;
+	document.getElementById("epassword").value = password;
+	$("#editUserForm").attr("action", "editUser");
 	$('#editUsermodal').modal('show');
 }
+
+function deleteUser() {
+	$("#editUserForm").attr("action", "deleteUser");
+}
+
 $('#ecancelUserbtn').click(function(){
 	$('#editUsermodal').modal('hide');
 
