@@ -29,7 +29,7 @@ public class UserController {
 		if (userService.checkCredentials(username, password) != null) {
 			modelMap.put("username", username);
 			modelMap.put("userList", userService.getAll());
-			return "adminPage";
+			return "adminpg";
 		} else {
 			modelMap.put("error", "Invalid UserName / Password");
 			return "login";
@@ -50,10 +50,10 @@ public class UserController {
 
 		if (userService.createUser(u) != null) {
 			modelMap.put("userList", userService.getAll());
-			return "adminPage";
+			return "adminpg";
 		} else {
 			modelMap.put("error", "Unsucessfully created new user");
-			return "adminPage";
+			return "adminpg";
 		}
 	}
 
@@ -73,10 +73,10 @@ public class UserController {
 
 		if (userService.updateUser(u) != null) {
 			modelMap.put("userList", userService.getAll());
-			return "adminPage";
+			return "adminpg";
 		} else {
 			modelMap.put("error", "Unsucessfully edited user");
-			return "adminPage";
+			return "adminpg";
 		}
 	}
 	
@@ -85,6 +85,11 @@ public class UserController {
 		userService.deleteUser(id);
 		modelMap.put("userList", userService.getAll());
 
-		return "adminPage";
+		return "adminpg";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout() {
+		return "login";
 	}
 }

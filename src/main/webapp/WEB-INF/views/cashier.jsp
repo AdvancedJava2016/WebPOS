@@ -1,74 +1,101 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ include file="topInclude.jsp"%>
-<link rel='stylesheet' href='resources/css/signin.css'>
-<title>TV5 Web POS - Admin</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Products</title>
+
+<link rel="stylesheet" type="text/css" href="js/semantic.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/semantic.js"></script>
+
+<style>
+</style>
 </head>
-<body>Hello ${ username }!
-	<br/><a href="/webpos/cashier">Cashier</a><br/><a href="/webpos/products">Products</a><br/><a href="/webpos">Admin</a>
 
-
-	<div class="container">
-		<form class="form-signin" method="" action="">
-			<h2 class="form-signin-heading">Point of Sale</h2>
-			<label for="inputFirstName" class="sr-only">Product Name</label> 
-			<input type="hidden" id="price" class="form-control"name="price">
-			<select class="form-control" name="inputProduct" id="inputProduct" onchange="onSelect(),calculatePrice()" >
-			<c:forEach items="${ productList }" var="p">	
-				<option value="${p.quantity}|${p.price}">${ p.pName }</option>
-				</c:forEach>
-			</select>
-			
-			<label for="quantity" class="sr-only">Quantity</label> 
-				<select id="quantity" class="form-control"onchange="calculatePrice()"  ></select>
-				
-				<label for="inputPrice" class="sr-only">Price</label> 
-				<input readonly  type="text" id="inputPrice" class="form-control"
-				placeholder="Price" name="price" required="" autofocus="" >
-				
-				
-			
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Add to cart</button>
-		</form>
+<body style="background-color: #ebebeb;">
+	<div class="ui inverted menu">
+		<div class="right menu">
+		<a class="active purple item"><i class="cubes icon"></i>Products</a>
+			<a class="item"><i class="cart icon"></i>Cart</a>
+			<a class="item">Log Out</a>
+		</div>
 	</div>
-	<div id="productList" class="container">
-		<table>
-			<thead>
-				<tr>
-					<th>Product ID</th>
-					<th>Product Name</th>
-					<th>Qty</th>
-					<th>Price</th>
-					<th>Edit huhu</th>
-					<th>Delete huhu</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="" var="p">
+	<div class="ui grid very padded relaxed stackable grid">
+		<div class="eleven wide column" style="">
+			<h3 class="ui purple center aligned icon header">
+				<i class="circular cubes icon"></i>
+			</h3>
+			<table class="ui black fixed padded very piled raised celled table">
+				<thead>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><button type="button" class="btn btn-info btn-lg" onClick="editProduct('${p.id}', '${ p.pName }','${ p.quantity }','${ p.price }')">Edit</button></td>
-						<td><button type="button" class="btn btn-info btn-lg" onClick="deleteProduct('${p.id}', '${ p.pName }','${ p.quantity }','${ p.price }')">delete</button></td>
+						<th>Product Name</th>
+						<th>Quantity</th>
+						<th>Price</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<tr>
+						<td>ASUS Zenfone 2 ZE551ML 4/64</td>
+						<td>27</td>
+						<td>P 14,995.00</td>
+					</tr>
+					<tr>
+						<td>iPhone 6s Plus 16GB (Rose Gold)</td>
+						<td>4</td>
+						<td>P 43,990.00</td>
+					</tr>
+					<tr>
+						<td>My Phone Agua Rio</td>
+						<td>29</td>
+						<td>P 4,900.00</td>
+				</tbody>
+				<!-- <tfoot>
+					<tr>
+						<th colspan="3">
+							<div class="ui right floated pagination menu">
+								<a class="icon item"> <i class="left chevron icon"></i>
+								</a> <a class="item">1</a> <a class="item">2</a> <a class="item">3</a>
+								<a class="item">4</a> <a class="icon item"> <i
+									class="right chevron icon"></i>
+								</a>
+							</div>
+						</th>
+					</tr>
+				</tfoot> -->
+			</table>
+		</div>
+		<div class="ui vertical divider"></div>
+		<div class="five wide column">
+			<div style="width: 80%; margin-top:60px;"
+				class="ui piled very padded text container segment">
+				<form class="ui form">
+					<div class="field">
+						<label>Product Name</label> <input type="text" name="first-name">
+					</div>
+					<div class="field">
+						<label>Quantity</label> <input type="number" name="last-name">
+					</div>
+					<div class="field">
+						<label>Price</label> <input type="text" name="password">
+					</div>
+					<button class="ui purple fluid center aligned labeled icon button" type="submit"><i class="add icon"></i>Add
+						New Product</button>
+				</form>
+			</div>
+		</div>	
 	</div>
-	
-
 </body>
-<%@ include file="bottomInclude.jsp" %>
-<script type="text/javascript" src="resources/js/user.js"></script>
-<script src="resources/js/jquery-2.2.1.js" type="text/javascript"></script>
+<script>
+	$('.ui.dropdown').dropdown();
 
-
-
+	function editUser() {
+		$('#edit').modal('show');
+		$('#edit').modal({
+			closable : false
+		})
+	}
+</script>
 </html>

@@ -6,10 +6,10 @@
 
 <title>Admin</title>
 
-<link rel="stylesheet" type="text/css" href="js/semantic.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/semantic.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/js/semantic.css">
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/jquery-ui.min.js"></script>
+<script src="resources/js/semantic.js"></script>
 
 <style>
 a.purple {
@@ -21,34 +21,31 @@ a.purple {
 <body style="background-color: #ebebeb;">
 	<div class="ui inverted menu">
 		<div class="right menu">
-			<a class="item">Log Out</a>
+			<a class="item" href="logout">Log Out</a>
 		</div>
 	</div>
 	<div class="ui grid very padded relaxed stackable grid">
 		<div class="five wide column">
 			<div style="width: 80%;"
 				class="ui piled very padded text container segment">
-				<form class="ui form">
+				<form class="ui form" action="addUser" method="POST">
 					<div class="field">
-						<label>First Name</label> <input type="text" name="first-name">
+						<label>First Name</label> <input type="text" name="firstName">
 					</div>
 					<div class="field">
-						<label>Last Name</label> <input type="text" name="last-name">
+						<label>Last Name</label> <input type="text" name="lastName">
 					</div>
 					<div class="field">
-						<label>Role</label> <select class="ui dropdown">
-							<option value="">---</option>
-							<option value="1">Cashier</option>
-							<option value="0">Administrator</option>
-							<option value="1">Manager</option>
-							<option value="0">Janitor</option>
+						<label>Role</label> <select name="role" class="ui dropdown">
+							<option value="admin">Admin</option>
+							<option value="cashier">Cashier</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>Username</label> <input type="text" name="username">
 					</div>
 					<div class="field">
-						<label>Password</label> <input type="text" name="password">
+						<label>Password</label> <input type="password" name="password">
 					</div>
 					<button class="ui purple fluid center aligned labeled icon button" type="submit"><i class="add user icon"></i>Add
 						New User</button>
@@ -66,28 +63,20 @@ a.purple {
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Username</th>
+						<th>Password</th>
 						<th>Role</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td><a class="ui purple" href="#" onClick="editUser()">Joseph Gabriell</a></td>
-						<td>Palmaras</td>
-						<td>palsmiley</td>
-						<td>Cashier</td>
-					</tr>
-					<tr>
-						<td><a class="ui purple" href="#" onClick="editUser()">Shawn</a></td>
-						<td>Mendes</td>
-						<td>ashawnti</td>
-						<td>Janitor</td>
-					</tr>
-					<tr>
-						<td><a class="ui purple" href="#" onClick="editUser()">Kendall</a></td>
-						<td>Jenner</td>
-						<td>kendalllight</td>
-						<td>Janitor</td>
-					</tr>
+					<c:forEach items="${ userList }" var="u">
+						<tr onClick="editUserModal('${ u.id }', '${ u.fName }', '${ u.lName }', '${ u.role }', '${ u.username }', '${ u.password }')">
+							<td>${ u.fName }</td>
+							<td>${ u.lName }</td>
+							<td>${ u.username }</td>
+							<td>${ u.password }</td>
+							<td>${ u.role }</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 				<!-- <tfoot>
 					<tr>
@@ -110,27 +99,24 @@ a.purple {
 		<div class="header">Edit User</div>
 		<div style="width: 80%;"
 			class="ui piled very padded text container segment">
-			<form class="ui form">
+			<form class="ui form" id="editUserForm" action="editUser" method="POST">
 				<div class="field">
-					<label>First Name</label> <input type="text" name="first-name">
+					<label>First Name</label> <input type="text" id="efname" name="firstName">
 				</div>
 				<div class="field">
-					<label>Last Name</label> <input type="text" name="last-name">
+					<label>Last Name</label> <input type="text" id="elname" name="lastName">
 				</div>
 				<div class="field">
-					<label>Role</label> <select class="ui dropdown">
-						<option value="">---</option>
-						<option value="1">Cashier</option>
-						<option value="0">Administrator</option>
-						<option value="1">Manager</option>
-						<option value="0">Janitor</option>
+					<label>Role</label> <select name="role" id="erole"class="ui dropdown">
+						<option value="admin">Administrator</option>
+						<option value="cashier">Cashier</option>
 					</select>
 				</div>
 				<div class="field">
-					<label>Username</label> <input type="text" name="last-name">
+					<label>Username</label> <input type="text" id="eusername" name="username">
 				</div>
 				<div class="field">
-					<label>Password</label> <input type="text" name="last-name">
+					<label>Password</label> <input type="password" id="epassword" name="password">
 				</div>
 			</form>
 		</div>
@@ -145,14 +131,10 @@ a.purple {
 		</div>
 	</div>
 </body>
+<script src="resources/js/user.js"></script>
 <script>
 	$('.ui.dropdown').dropdown();
 
-	function editUser() {
-		$('#edit').modal('show');
-		$('#edit').modal({
-			closable : false
-		})
-	}
+	
 </script>
 </html>
