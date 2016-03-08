@@ -15,6 +15,7 @@ public class ProductController {
 	
 	@Autowired
 	ProductService productService;
+	
 	Product product;
 	
 	
@@ -23,6 +24,13 @@ public class ProductController {
 		
 		modelMap.put("productList", productService.getAllProducts());
 		return "productspage1";
+	}
+	
+	@RequestMapping(value = "/products2", method = RequestMethod.GET)
+	public String page2(ModelMap modelMap) {
+		
+		modelMap.put("productList", productService.getAllProducts());
+		return "productspage2";
 	}
 	
 	@RequestMapping(value = "/cashier", method = RequestMethod.GET)
