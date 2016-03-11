@@ -23,7 +23,7 @@
 			<b>WEBPOS</b>
 		</h4>
 		<div class="right menu">
-			<a class="item">Log Out</a>
+			<a class="item" href="logout">Log Out</a>
 		</div>
 	</div>
 	<div class="ui grid very padded relaxed stackable grid">
