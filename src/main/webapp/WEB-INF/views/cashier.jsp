@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,53 +15,56 @@
 
 
 	<div class="container">
-		<form class="form-signin" method="" action="">
+		<f:form modelAttribute="cart" action="addcart.htm" method="POST" class="form-signin">
 			<h2 class="form-signin-heading">Point of Sale</h2>
-			<label for="inputFirstName" class="sr-only">Product Name</label> 
+			<label for="prodName" class="sr-only">Product Name</label> 
 			<input type="hidden" id="price" class="form-control"name="price">
 			<select class="form-control" name="inputProduct" id="inputProduct" onchange="onSelect(),calculatePrice()" >
 			<c:forEach items="${ productList }" var="p">	
-				<option value="${p.quantity}|${p.price}">${ p.pName }</option>
+				<option value="${p.quantity}|${p.price}|${ p.pName }|${ p.id }">${ p.pName }</option>
 				</c:forEach>
 			</select>
 			
 			<label for="quantity" class="sr-only">Quantity</label> 
 				<select id="quantity" class="form-control"onchange="calculatePrice()"  ></select>
-				
 				<label for="inputPrice" class="sr-only">Price</label> 
 				<input readonly  type="text" id="inputPrice" class="form-control"
 				placeholder="Price" name="price" required="" autofocus="" >
+		<f:input path="ID" id="inID" hidden="true"/>
+		 <f:input path="name" id="inName" hidden="true"/> 
+		<f:input path="price" id="inPrice" hidden="true"/> 
+		<f:input path="quantity" id="inQuantity" hidden="true"/>
 				
-				
-			
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Add to cart</button>
-		</form>
+			<input class="btn btn-lg btn-primary btn-block" id ="inSubmit" type="submit" value= "Add to cart"/>
+		</f:form>
+		
+		
 	</div>
 	<div id="productList" class="container">
 		<table>
-			<thead>
 				<tr>
 					<th>Product ID</th>
 					<th>Product Name</th>
 					<th>Qty</th>
 					<th>Price</th>
-					<th>Edit huhu</th>
+					<th>Total </th>
 					<th>Delete huhu</th>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="" var="p">
+				<c:forEach items='<%= request.getSession().getAttribute("cart") %>' var = "c">
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><button type="button" class="btn btn-info btn-lg" onClick="editProduct('${p.id}', '${ p.pName }','${ p.quantity }','${ p.price }')">Edit</button></td>
-						<td><button type="button" class="btn btn-info btn-lg" onClick="deleteProduct('${p.id}', '${ p.pName }','${ p.quantity }','${ p.price }')">delete</button></td>
+					<td>${c.ID }<td>
+					<td>${c.name }<td>
+					<td>${c.price }<td>
+					<td>${c.quantity }<td>
+					<td>total: ${c.price * c.quantity }<td>
+					<td> <a href="./remove.htm?id= ${c.ID }" onClick="return confirm('Are you sure?')"> 
+							Remove</a>
+					</td>
+					
 					</tr>
 				</c:forEach>
-			</tbody>
 		</table>
+			Super Total: <%=request.getSession().getAttribute("total") %>
 	</div>
 	
 
