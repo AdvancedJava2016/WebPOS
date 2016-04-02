@@ -39,6 +39,14 @@
 		</f:form>
 		
 		
+			<input path="money" id="money" />
+		<input path="change" id="change" /> 
+		<f:form modelAttribute="cart" action="checkout.htm" method="POST" class="form-signin">
+			<label for="checkout" class="sr-only">CHECKOUT</label> 				
+			<input class="btn btn-lg btn-primary btn-block" id ="inSubmit" type="submit" value= "Checkout"/>
+		</f:form>
+		
+		
 	</div>
 	<div id="productList" class="container">
 		<table>
