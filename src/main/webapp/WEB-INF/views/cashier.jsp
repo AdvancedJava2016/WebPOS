@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
 <head>
@@ -6,8 +7,8 @@
 
 <title>Products</title>
 
-<link rel="stylesheet" type="text/css" href="js/semantic.css">
-<link rel="stylesheet" type="text/css" href="js/custom.css">
+<link rel="stylesheet" type="text/css" href="resources/js/semantic.css">
+<link rel="stylesheet" type="text/css" href="resources/js/custom.css">
 
 <style>
 </style>
@@ -19,6 +20,8 @@
 			<b>WEBPOS</b>
 		</h4>
 		<div class="right menu">
+		<a class="item" href="products" ><i class="cubes icon"></i>Products</a> <a
+				class="item" href="home" ><i class="cart icon"></i>Cart</a>
 			<a class="item">Log Out</a>
 		</div>
 	</div>
@@ -50,20 +53,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>ASUS Zenfone 2 ZE551ML 4/64</td>
-						<td>27</td>
-						<td>P 14,995.00</td>
-					</tr>
-					<tr>
-						<td>iPhone 6s Plus 16GB (Rose Gold)</td>
-						<td>4</td>
-						<td>P 43,990.00</td>
-					</tr>
-					<tr>
-						<td>My Phone Agua Rio</td>
-						<td>29</td>
-						<td>P 4,900.00</td>
+					<c:forEach items="${ productList }" var="p">
+							<tr>
+								<td>${ p.pName }</td>
+								<td>${ p.quantity }</td>
+								<td>${ p.price }</td>
+							</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
@@ -163,16 +159,16 @@
 	<div id="addProd" class="ui basic small modal">
 		<div style="width: 50%"
 			class="ui piled very padded text container segment">
-			<form class="ui form">
+			<form class="ui form" method="POST" action="addProduct">
 				<div class="field">
 					<label>Product Name</label> <input type="text" id="pName"
-						name="first-name">
+						name="pName">
 				</div>
 				<div class="field">
-					<label>Quantity</label> <input type="number" name="last-name">
+					<label>Quantity</label> <input type="number" name="quantity">
 				</div>
 				<div class="field">
-					<label>Price</label> <input type="text" name="password">
+					<label>Price</label> <input type="text" name="price">
 				</div>
 				<button class="ui blue fluid center aligned labeled icon button"
 					type="submit">
@@ -183,10 +179,10 @@
 	</div>
 </body>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/semantic.js"></script>
-<script src="js/main.js"></script>
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/jquery-ui.min.js"></script>
+<script src="resources/js/semantic.js"></script>
+<script src="resources/js/main.js"></script>
 <script>
 	$('.ui.dropdown').dropdown();
 

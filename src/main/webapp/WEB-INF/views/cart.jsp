@@ -6,10 +6,10 @@
 
 <title>Cart</title>
 
-<link rel="stylesheet" type="text/css" href="js/semantic.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/semantic.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/js/semantic.css">
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/jquery-ui.min.js"></script>
+<script src="resources/js/semantic.js"></script>
 
 <style>
 </style>
@@ -18,8 +18,8 @@
 <body style="background-color: #ebebeb;">
 	<div class="ui inverted menu">
 		<div class="right menu">
-			<a class="item"><i class="cubes icon"></i>Products</a> <a
-				class="active purple item"><i class="cart icon"></i>Cart</a> <a
+			<a class="item" href="products" ><i class="cubes icon"></i>Products</a> <a
+				class="active purple item" href="home" ><i class="cart icon"></i>Cart</a> <a
 				class="item">Log Out</a>
 		</div>
 	</div>
