@@ -49,12 +49,16 @@ a.purple {
 					<div class="field">
 						<label>Password</label> <input type="password" name="password">
 					</div>
-					<button class="ui purple fluid center aligned labeled icon button" type="submit"><i class="add user icon"></i>Add
-						New User</button>
-			</form>
+					<button class="ui purple fluid center aligned labeled icon button"
+						type="submit">
+						<i class="add user icon"></i>Add New User
+					</button>
+				</form>
 			</div>
 		</div>
-		<div class="ui vertical divider"><i class="star icon"></i></div>
+		<div class="ui vertical divider">
+			<i class="star icon"></i>
+		</div>
 		<div class="eleven wide column" style="">
 			<h3 class="ui center aligned icon header">
 				<i class="circular inverted users icon"></i>
@@ -65,17 +69,16 @@ a.purple {
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Username</th>
-						<th>Password</th>
 						<th>Role</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${ userList }" var="u">
-						<tr onClick="editUserModal('${ u.id }', '${ u.fName }', '${ u.lName }', '${ u.role }', '${ u.username }', '${ u.password }')">
-							<td>${ u.fName }</td>
+						<tr>
+							<td><a class="purple" href="#"
+								onClick="editUserModal('${ u.id }', '${ u.fName }', '${ u.lName }', '${ u.role }', '${ u.username }', '${ u.password }')">${ u.fName }</a></td>
 							<td>${ u.lName }</td>
 							<td>${ u.username }</td>
-							<td>${ u.password }</td>
 							<td>${ u.role }</td>
 						</tr>
 					</c:forEach>
@@ -97,50 +100,53 @@ a.purple {
 		</div>
 	</div>
 
-	<div id="edit" class="ui modal">
-		<div class="header">Edit User</div>
+	<div id="edit" class="ui basic modal">
 		<div style="width: 80%;"
 			class="ui piled very padded text container segment">
-			<form class="ui form" id="editUserForm" action="editUser" method="POST">
+			<form class="ui form" id="editUserForm" action="editUser"
+				method="POST">
 				<div class="field">
 					<label>ID</label> <input type="text" id="eID" name="id">
 				</div>
 				<div class="field">
-					<label>First Name</label> <input type="text" id="efname" name="firstName">
+					<label>First Name</label> <input type="text" id="efname"
+						name="firstName">
 				</div>
 				<div class="field">
-					<label>Last Name</label> <input type="text" id="elname" name="lastName">
+					<label>Last Name</label> <input type="text" id="elname"
+						name="lastName">
 				</div>
 				<div class="field">
-					<label>Role</label> <select name="role" id="erole"class="">
-						<option value="admin">admin</option>
-						<option value="cashier">cashier</option>
+					<label>Role</label> <select name="role" id="erole" class="">
+						<option value="admin">Admin</option>
+						<option value="cashier">Cashier</option>
 					</select>
 				</div>
 				<div class="field">
-					<label>Username</label> <input type="text" id="eusername" name="username">
+					<label>Username</label> <input type="text" id="eusername"
+						name="username">
 				</div>
 				<div class="field">
-					<label>Password</label> <input type="password" id="epassword" name="password">
+					<label>Password</label> <input type="password" id="epassword"
+						name="password">
 				</div>
-				<div class="actions">
-			<div class="ui gray right labeled icon">
-				<button onClick="deleteUser()" type="submit">Delete User</button> <i class="trash icon"></i>
-			</div>
-			<div class="ui purple right labeled icon">
-				<button type="submit">Save</button> <i class="checkmark icon"></i>
-			</div>
-			<div class="ui black deny button">Cancel</div>
-		</div>
+				<div class="ui divider"></div>
+				<div class="field actions right" style="float:right!important">
+						<button class="ui gray right labeled icon button"
+							onClick="deleteUser()" type="submit">
+							<i class="trash icon"></i>Delete User
+						</button>
+						<button class="ui purple right labeled icon button" type="submit">
+							<i class="checkmark icon"></i>Save
+						</button>
+					<div class="ui black deny button">Cancel</div>
+				</div>
 			</form>
 		</div>
-		
 	</div>
 </body>
 <script src="resources/js/user.js"></script>
 <script>
 	$('.ui.dropdown').dropdown();
-
-	
 </script>
 </html>

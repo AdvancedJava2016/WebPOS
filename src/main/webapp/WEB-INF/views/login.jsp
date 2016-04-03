@@ -23,7 +23,7 @@
 				<label>Username</label> <input type="text" name="username">
 			</div>
 			<div class="field">
-				<label>Password</label> <input type="text" name="password">
+				<label>Password</label> <input type="password" name="password">
 			</div>
 
 			<button class="ui fluid purple button" type="submit">Log In</button>
