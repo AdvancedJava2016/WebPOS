@@ -47,10 +47,7 @@
 			<div class="ui inverted segment">
 			  <div class="ui inverted secondary pointing menu">
 				<a class="active item" href="home">
-				  Home
-				</a>
-				<a class="item" href="reports">
-				  Reports
+				  Cart
 				</a>
 				<a class="item" href="products">
 				  Products
