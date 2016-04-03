@@ -22,7 +22,7 @@
 		<div class="right menu">
 		<a class="item" href="products" ><i class="cubes icon"></i>Products</a> <a
 				class="item" href="home" ><i class="cart icon"></i>Cart</a>
-			<a class="item">Log Out</a>
+			<a class="item" href="logout">Log Out</a>
 		</div>
 	</div>
 	<div class="ui grid padded">
