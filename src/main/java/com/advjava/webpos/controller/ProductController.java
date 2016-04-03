@@ -201,21 +201,40 @@ public class ProductController {
 		List<Cart> lst;
 		lst = (List<Cart>) session.getAttribute("cart");
 		int userid = (Integer) session.getAttribute("userID");
+		float superTotal = (Float) session.getAttribute("total");
+		String products ="";
 		if(lst != null){
 			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
 			Purchase pur = new Purchase();
 			double total_price = 0;
 			for(Cart cart : lst){
 				total_price+=(cart.getPrice()*cart.getQuantity());
+				products = products + Integer.toString(cart.getID()) +"-" + Integer.toString(cart.getQuantity()) + "|";
+				//products: ProductID-ProductQuantity|ProductID-ProductQuantity|ProductID-ProductQuantity|
+				
+				Product p = new Product();
+				p.setId(cart.getID());
+				p.setpName(cart.getName());
+				p.setPrice(cart.getPrice());
+				p.setQuantity(productService.getProductByID(cart.getID()).getQuantity() - cart.getQuantity());
+				productService.updateProduct(p);
+				
 			}
 			pur.setTotal_price(total_price);
 			pur.setCashier_id(userid);
+			pur.setProducts(products);
+			lst.clear();
+			superTotal = 0;
+			session.setAttribute("total", superTotal);
+			session.setAttribute("cart", lst);
+			
 			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++"+pur.getTotal_price());
 			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++"+pur.getCashier_id());
 			if (purchaseService.createPurchase(pur) != null) {
-				
+				modelMap.put("productList", productService.getAllProducts());
 				return "cashier";
 			} else {
+				modelMap.put("productList", productService.getAllProducts());
 				modelMap.put("error", "Edit Product Failed!");
 				return "cashier";
 			}

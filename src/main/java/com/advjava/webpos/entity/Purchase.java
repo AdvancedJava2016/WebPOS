@@ -24,8 +24,21 @@ public class Purchase implements Serializable{
 
 	@Column(name = "cashier_id")
 	private Integer cashier_id;
-
 	
+	@Column(name = "products")
+	private String products;
+	
+	
+	public String getProducts() {
+		return products;
+	}
+
+
+	public void setProducts(String products) {
+		this.products = products;
+	}
+
+
 	@Column(name = "total_price")
 	private double total_price;
 

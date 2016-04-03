@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.advjava.webpos.entity.Cart;
 import com.advjava.webpos.entity.User;
+import com.advjava.webpos.service.ProductService;
 import com.advjava.webpos.service.UserService;
 
 @Controller
@@ -18,6 +19,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ProductService productService;
 
 	// @RequestMapping(value="/login", method = RequestMethod.GET)
 	// public String checkCredentials(Model model) {
@@ -39,6 +43,7 @@ public class UserController {
 			if(userService.getUserType(username).equals("admin") ){
 				return "adminPage";
 			}else{
+				modelMap.put("productList", productService.getAllProducts());
 				return "cashier";
 			}
 		} else {
