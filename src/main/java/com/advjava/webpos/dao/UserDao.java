@@ -35,6 +35,12 @@ public class UserDao extends AbstractDao<User, Integer> {
 		criteria.add(Restrictions.eq("u.username", username));
 		return (User) criteria.uniqueResult();
 	}
+	
+	public User getUserById(int id) {
+		Criteria criteria = createEntityCriteria("u");
+		criteria.add(Restrictions.eq("u.id", id));
+		return (User) criteria.uniqueResult();
+	}
 
 	public User updateUser(User u) {
 		update(u);

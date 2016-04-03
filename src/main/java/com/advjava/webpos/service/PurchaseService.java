@@ -10,6 +10,7 @@ import com.advjava.webpos.dao.PurchaseDao;
 import com.advjava.webpos.dao.UserDao;
 import com.advjava.webpos.entity.Purchase;
 import com.advjava.webpos.entity.User;
+import com.advjava.webpos.model.Income;
 
 
 @Transactional
@@ -27,6 +28,8 @@ public class PurchaseService {
 		return purchaseDao.addPurchase(p);
 	}
 
-	
+	public List<Income> getIncome() {
+		return purchaseDao.getIncomeReport();
+	}
 
 }
