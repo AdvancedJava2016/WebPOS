@@ -50,7 +50,7 @@ public class UserController {
 			}
 		} else {
 			modelMap.put("error", "Invalid UserName / Password");
-			return "login";
+			return "index";
 		}
 	}
 

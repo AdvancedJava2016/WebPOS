@@ -6,7 +6,7 @@
  * Copyright (C) Moneytor
  * -------------------------------------------------------------------------
  -->
- 
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -119,60 +119,40 @@
 						<th>Total Price</th>
 						</tr></thead>
 					  <tbody>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td>Doe</td>
-						  <td>johndoe</td>
-					    </tr>
-						<tr>
-						  <td>John</td>
-						  <td>Doe</td>
-						  <td>johndoe</td>
-						</tr>
+						<c:forEach items="${ productReportList }" var="x">
+							<tr>
+								<td>${ x.name }</td>
+								<td>${ x.qty }</td>
+								<td>${ x.total }</td>
+							</tr>
+						</c:forEach>
 					  </tbody>
 					</table>	
-				<div class="labelnames">
-							<b>Total Amount: </b>
-							&nbsp &nbsp &nbsp
-							<label>PHP 0.00</label>
-				</div>
+				
 			</div>
 						<div id="cashsales">
 				<a class="hddst"> CASHIER SALES </a>
 				<hr/>
 				<div class="labelnames">
-							<b>DATE</b>
+					
 				</div>
 					<table class="ui fixed single line celled table">
 					  <thead>
-						<tr><th>Cashier Name</th>
+						<tr>
+						<th>Date</th>
+						<th>Cashier Name</th>
 						<th>Total Income</th>
 						</tr></thead>
 					  <tbody>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td>Doe</td>
-					    </tr>
-						<tr>
-						  <td>John</td>
-						  <td>Doe</td>
-						</tr>
+						<c:forEach items="${ income }" var="i">
+							<tr>
+								<td>${ i.date }</td>
+								<td>${ i.cashier }</td>
+								<td>${ i.total }</td>
+							</tr>
+						</c:forEach>
 					  </tbody>
-					</table>	
-				<div class="labelnames">
-							<b>Total Amount: </b>
-							&nbsp &nbsp &nbsp
-							<label>PHP 0.00</label>
-				</div>
+					</table>
 			</div>
 
 			
