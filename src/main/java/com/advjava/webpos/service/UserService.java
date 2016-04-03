@@ -42,6 +42,14 @@ public class UserService {
 			return false;
 		}
 	}
+	
+	public int getIdbyUsername(String username) {
+		return userDao.getUserByUsername(username).getId();
+	}
+	
+	public String getUserType(String username) {
+		return userDao.getUserByUsername(username).getRole();
+	}
 
 	public User checkCredentials(String username, String password) {
 		User u = userDao.getUserByUsername(username);
@@ -68,4 +76,5 @@ public class UserService {
 			return null;
 		}
 	}
+	
 }
