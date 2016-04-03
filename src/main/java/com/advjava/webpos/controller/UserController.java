@@ -1,5 +1,7 @@
 package com.advjava.webpos.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -7,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.advjava.webpos.entity.Cart;
 import com.advjava.webpos.entity.User;
+import com.advjava.webpos.service.ProductService;
 import com.advjava.webpos.service.UserService;
 
 @Controller
@@ -15,6 +19,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ProductService productService;
 
 	// @RequestMapping(value="/login", method = RequestMethod.GET)
 	// public String checkCredentials(Model model) {
@@ -22,14 +29,34 @@ public class UserController {
 	//
 	// return "login";
 	// }
+	
+	@RequestMapping(value = "/home", method = { RequestMethod.GET })
+	public String home(HttpSession session, ModelMap modelMap) {
+		if(session.getAttribute("userType").equals("admin") ){
+			modelMap.put("userList", userService.getAll());
+			return "adminpg";
+		}else{
+			modelMap.put("productList", productService.getAllProducts());
+			return "cart";
+		}
+	}
 
 	@RequestMapping(value = "/login", method = { RequestMethod.POST })
-	public String checkCredentials(ModelMap modelMap, @RequestParam(value = "username") String username,
+	public String checkCredentials(HttpSession session, ModelMap modelMap, @RequestParam(value = "username") String username,
 			@RequestParam(value = "password") String password) {
+		modelMap.put("cart", new Cart());
 		if (userService.checkCredentials(username, password) != null) {
 			modelMap.put("username", username);
 			modelMap.put("userList", userService.getAll());
-			return "adminpg";
+			session.setAttribute("userID", userService.getIdbyUsername(username));
+			session.setAttribute("userType", userService.getUserType(username));
+			System.out.println("+++++++++++++++++++++"+userService.getUserType(username));
+			if(userService.getUserType(username).equals("admin") ){
+				return "adminpg";
+			}else{
+				modelMap.put("productList", productService.getAllProducts());
+				return "cart";
+			}
 		} else {
 			modelMap.put("error", "Invalid UserName / Password");
 			return "login";
@@ -84,7 +111,6 @@ public class UserController {
 	public String deleteUser(ModelMap modelMap, @RequestParam(value = "id") Integer id) {
 		userService.deleteUser(id);
 		modelMap.put("userList", userService.getAll());
-
 		return "adminpg";
 	}
 	

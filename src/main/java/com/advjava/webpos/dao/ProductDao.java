@@ -35,6 +35,12 @@ public class ProductDao extends AbstractDao<Product, Integer> {
 		return (Product) criteria.uniqueResult();
 	}
 
+	public Product getProductByProductID(int id) {
+		Criteria criteria = createEntityCriteria("p");
+		criteria.add(Restrictions.eq("p.id", id));
+		return (Product) criteria.uniqueResult();
+	}
+	
 	public Product updateProduct(Product p) {
 		update(p);
 

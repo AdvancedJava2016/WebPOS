@@ -23,6 +23,7 @@ a.purple {
 <body style="background-color: #ebebeb;">
 	<div class="ui inverted menu">
 		<div class="right menu">
+			<a class="item" href="reports">Reports</a>
 			<a class="item" href="logout">Log Out</a>
 		</div>
 	</div>

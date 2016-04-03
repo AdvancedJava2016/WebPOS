@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
 <head>
@@ -6,10 +7,10 @@
 
 <title>Products</title>
 
-<link rel="stylesheet" type="text/css" href="js/semantic.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/semantic.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/js/semantic.css">
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/jquery-ui.min.js"></script>
+<script src="resources/js/semantic.js"></script>
 
 <style>
 </style>
@@ -18,9 +19,9 @@
 <body style="background-color: #ebebeb;">
 	<div class="ui inverted menu">
 		<div class="right menu">
-		<a class="active purple item"><i class="cubes icon"></i>Products</a>
-			<a class="item"><i class="cart icon"></i>Cart</a>
-			<a class="item">Log Out</a>
+		<a class="active purple item" href="products"><i class="cubes icon"></i>Products</a>
+			<a class="item" href="home"><i class="cart icon"></i>Cart</a>
+			<a class="item" href="logout">Log Out</a>
 		</div>
 	</div>
 	<div class="ui grid very padded relaxed stackable grid">
@@ -37,20 +38,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>ASUS Zenfone 2 ZE551ML 4/64</td>
-						<td>27</td>
-						<td>P 14,995.00</td>
-					</tr>
-					<tr>
-						<td>iPhone 6s Plus 16GB (Rose Gold)</td>
-						<td>4</td>
-						<td>P 43,990.00</td>
-					</tr>
-					<tr>
-						<td>My Phone Agua Rio</td>
-						<td>29</td>
-						<td>P 4,900.00</td>
+					<c:forEach items="${ productList }" var="p">
+						<tr>
+							<td>${ p.pName }</td>
+							<td>${ p.quantity }</td>
+							<td>${ p.price }</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 				<!-- <tfoot>
 					<tr>
@@ -71,15 +65,15 @@
 		<div class="five wide column">
 			<div style="width: 80%; margin-top:60px;"
 				class="ui piled very padded text container segment">
-				<form class="ui form">
+				<form class="ui form" action="addProduct" method="POST">
 					<div class="field">
-						<label>Product Name</label> <input type="text" name="first-name">
+						<label>Product Name</label> <input type="text" name="pName">
 					</div>
 					<div class="field">
-						<label>Quantity</label> <input type="number" name="last-name">
+						<label>Quantity</label> <input type="number" name="quantity">
 					</div>
 					<div class="field">
-						<label>Price</label> <input type="text" name="password">
+						<label>Price</label> <input type="text" name="price">
 					</div>
 					<button class="ui purple fluid center aligned labeled icon button" type="submit"><i class="add icon"></i>Add
 						New Product</button>
