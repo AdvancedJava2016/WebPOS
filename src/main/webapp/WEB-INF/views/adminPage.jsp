@@ -43,7 +43,7 @@
 		<div class="ui container">
 			<div class="ui inverted segment">
 				<div class="ui inverted secondary pointing menu">
-					<a class="active item" href="home"> Users </a><a class="item" href="reports">
+					<a class="active item" href="home"> Users </a><a class="item" href="report">
 				  Reports
 				</a> <a class="item" href="logout"> Logout </a>
 				</div>
