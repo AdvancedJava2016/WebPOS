@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp"%>
 <title>POS</title>
 </head>
@@ -21,11 +22,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Trisha</td>
-							<td>Lim</td>
-							<td>trishalim</td>
-						</tr>
+						<c:forEach items="${ productReportList }" var="x">
+							<tr>
+								<td>${ x.name }</td>
+								<td>${ x.qty }</td>
+								<td>${ x.total }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -36,16 +39,18 @@
 					<thead>
 						<tr>
 							<th>Date</th>
-							<th>Income</th>
 							<th>Cashier</th>
+							<th>Income</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Trisha</td>
-							<td>Lim</td>
-							<td>trishalim</td>
-						</tr>
+						<c:forEach items="${ income }" var="i">
+							<tr>
+								<td>${ i.date }</td>
+								<td>${ i.cashier }</td>
+								<td>${ i.total }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
