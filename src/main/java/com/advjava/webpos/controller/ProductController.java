@@ -45,13 +45,6 @@ public class ProductController {
 		return "productspage2";
 	}
 	
-	@RequestMapping(value = "/cashier", method = RequestMethod.GET)
-	public String cashierList(ModelMap modelMap) {
-		
-		modelMap.put("productList", productService.getAllProducts());
-		return "cashier";
-	}
-	
 	@RequestMapping("/deleteProduct")
 	public String deleteProduct(ModelMap modelMap, @RequestParam(value = "id") Integer id) {
 		productService.deleteProduct(id);
