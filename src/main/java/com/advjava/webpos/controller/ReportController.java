@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ReportController {
 	
 	
-	@RequestMapping(value = "/report", method = RequestMethod.GET)
+	@RequestMapping(value = "/reportss", method = RequestMethod.GET)
 	public String page2(ModelMap modelMap) {
 		
 		modelMap.put("reportList", "");
