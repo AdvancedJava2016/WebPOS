@@ -22,6 +22,17 @@ public class UserController {
 	@Autowired
 	ProductService productService;
 
+	@RequestMapping(value = "/home", method = { RequestMethod.GET })
+	public String home(HttpSession session, ModelMap modelMap) {
+		if(session.getAttribute("userType").equals("admin") ){
+			modelMap.put("userList", userService.getAll());
+			return "adminPage";
+		}else{
+			modelMap.put("productList", productService.getAllProducts());
+			return "productspage2";
+		}
+	}
+	
 	@RequestMapping(value = "/login", method = { RequestMethod.GET })
 	public String checkCredentials(HttpSession session, ModelMap modelMap, @RequestParam(value = "username") String username,
 			@RequestParam(value = "password") String password) {
@@ -35,7 +46,7 @@ public class UserController {
 				return "adminPage";
 			}else{
 				modelMap.put("productList", productService.getAllProducts());
-				return "productspage1";
+				return "productspage2";
 			}
 		} else {
 			modelMap.put("error", "Invalid UserName / Password");

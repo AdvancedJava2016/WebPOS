@@ -46,8 +46,8 @@
 			<div class="ui grid middle aligned center aligned">
 				<a class="navie"> Announcements </a>
 				<a class="navie" href="products" > Products </a>
-				<a class="navie" href="#" > Users </a>
-				<a class="navie" href="reports"> Report </a>
+				<a class="navie" href="home" > Home </a>
+				<a class="navie" href="report"> Report </a>
 				<a class="navie" href="logout" id="logoutbtn"> Log Out </a>
 
 			</div>	
