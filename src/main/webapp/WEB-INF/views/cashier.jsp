@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,21 +9,41 @@
 <title>POS</title>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Simple POS by TRISHA JEAN LIM</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li><a href="home">Cart</a></li>
+            <li><a href="products">Products</a></li>
+            <li><a href="logout">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-6">
-				<form>
+				<form method="POST" action="addProduct">
 					<div class="form-group">
 						<label for="fname">Product</label> <input type="text"
-							class="form-control" id="product" required>
+							class="form-control" id="product" name="pName" required>
 					</div>
 					<div class="form-group">
 						<label for="pw">Quantity</label> <input type="number"
-							class="form-control" id="qty" required>
+							class="form-control" name="quantity" id="qty" required>
 					</div>
 					<div class="form-group">
 						<label for="pw">Price</label> <input type="number"
-							class="form-control" id="price" required>
+							class="form-control" id="price" name="price" required>
 					</div>
 					<button type="submit" class="btn btn-info">Add New Product</button>
 				</form>
@@ -38,29 +59,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Trisha</td>
-							<td>Lim</td>
-							<td>trishalim</td>
-						</tr>
-						<tr>
-							<th>Total:</th>
-							<td></td>
-							<td></td>
-						</tr>
+						<c:forEach items="${ productList }" var="p">
+							<tr>
+								<td>${ p.pName }</td>
+								<td>${ p.quantity }</td>
+								<td>${ p.price }</td>
+							</tr>
+						</c:forEach>
 						
 					</tbody>
 				</table>
-			<form>
-				<div class="form-group">
-					<label for="fname">Money</label> <input type="text"
-						class="form-control" id="money" required>
-				</div>
-				<div class="form-group">
-					<label for="pw">Change</label> <input type="number"
-						class="form-control" id="change" required>
-				</div>
-			</form>
 			</div>
 		</div>
 		

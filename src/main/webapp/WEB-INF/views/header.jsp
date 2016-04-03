@@ -16,8 +16,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
           <ul class="nav navbar-nav">
-            <li><a href="admin">Home</a></li>
-            <li><a href="cashier">Cashier</a></li>
+            <li><a href="admin">Users</a></li>
             <li><a href="report">Report</a></li>
             <li><a href="logout">Log Out</a></li>
           </ul>

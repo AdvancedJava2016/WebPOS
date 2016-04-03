@@ -4,7 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%@ include file="header.jsp"%>
+
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="resources/js/jquery.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+
 <title>POS</title>
 </head>
 <body>
