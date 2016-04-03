@@ -23,6 +23,8 @@
 			<a href=""><b>WEBPOS</b></a>
 		</h4>
 		<div class="right menu">
+			<a class="item" href="home">Users</a>
+			<a class="item" href="report">Report</a>
 			<a class="item" href="logout">Log Out</a>
 		</div>
 	</div>

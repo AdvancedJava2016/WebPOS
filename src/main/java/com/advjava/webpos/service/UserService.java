@@ -67,6 +67,10 @@ public class UserService {
 	public User updateUser(User u) {
 		return userDao.updateUser(u);
 	}
+	
+	public User getUserById (int id) {
+		return userDao.getUserById(id);
+	}
 
 	public User getByEmail(String username) {
 		User u = userDao.getUserByUsername(username);
