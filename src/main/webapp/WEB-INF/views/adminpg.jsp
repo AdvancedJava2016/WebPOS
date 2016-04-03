@@ -20,7 +20,7 @@
 <body>
 	<div class="ui blue inverted menu">
 		<h4 class="item" style="margin-bottom: 0px !important;">
-			<b>WEBPOS</b>
+			<a href=""><b>WEBPOS</b></a>
 		</h4>
 		<div class="right menu">
 			<a class="item" href="logout">Log Out</a>
@@ -49,7 +49,7 @@
 					<div class="field">
 						<label>Password</label> <input type="password" name="password">
 					</div>
-					<button class="ui right floated labeled icon button">
+					<button class="ui right floated labeled icon button" type="cancel">
 						<i class="cancel icon"></i>Cancel
 					</button>
 					<button class="ui blue right floated labeled icon button"
@@ -62,7 +62,10 @@
 		<div class="three wide column"></div>
 		<div class="ten wide column">
 			<div style="margin-bottom: 10px !important;">
-				<button class="divfix circular ui massive activating element blue icon button" data-content="Add New User" data-variation="basic" onclick="addUser()">
+				<button
+					class="divfix circular ui massive activating element blue icon button"
+					data-content="Add New User" data-variation="basic"
+					onclick="addUser()">
 					<i class="icon add user"></i>
 				</button>
 			</div>
@@ -80,11 +83,12 @@
 				<tbody>
 					<c:forEach items="${ userList }" var="u">
 						<tr>
-							<td><a class="ui brown" href="#" onClick="editUserModal('${ u.id }', '${ u.fName }', '${ u.lName }', '${ u.role }', '${ u.username }', '${ u.password }')">${ u.fName }</a></td>
-								<td>${ u.lName }</td>
-								<td>${ u.username }</td>
-								<td>${ u.password }</td>
-								<td>${ u.role }</td>
+							<td><a class="ui brown" href="#"
+								onClick="editUserModal('${ u.id }', '${ u.fName }', '${ u.lName }', '${ u.role }', '${ u.username }', '${ u.password }')">${ u.fName }</a></td>
+							<td>${ u.lName }</td>
+							<td>${ u.username }</td>
+							<td>${ u.password }</td>
+							<td>${ u.role }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -109,41 +113,45 @@
 		<div class="header">Edit User</div>
 		<div style="width: 80%;"
 			class="ui piled very padded text container segment">
-			<form class="ui form" id="editUserForm" action="editUser" method="POST">
+			<form class="ui form" id="editUserForm" action="editUser"
+				method="POST">
 				<div class="field">
-						<label>ID</label> <input type="text" name="id" id="eID">
-					</div>
-				<div class="field">
-					<label>First Name</label> <input type="text" name="firstName" id="efname">
+					<label>ID</label> <input type="text" name="id" id="eID">
 				</div>
 				<div class="field">
-					<label>Last Name</label> <input type="text" name="lastName" id="elname">
+					<label>First Name</label> <input type="text" name="firstName"
+						id="efname">
 				</div>
 				<div class="field">
-					<label>Role</label> <select name="role" id="erole"class="ui">
+					<label>Last Name</label> <input type="text" name="lastName"
+						id="elname">
+				</div>
+				<div class="field">
+					<label>Role</label> <select name="role" id="erole" class="ui">
 						<option value="">---</option>
 						<option value="admin">Administrator</option>
 						<option value="cashier">Cashier</option>
 					</select>
 				</div>
 				<div class="field">
-					<label>Username</label> <input type="text" name="username" id="eusername">
+					<label>Username</label> <input type="text" name="username"
+						id="eusername">
 				</div>
 				<div class="field">
-					<label>Password</label> <input type="password" name="password" id="epassword">
+					<label>Password</label> <input type="password" name="password"
+						id="epassword">
 				</div>
 				<div class="actions">
-			<div class="ui gray right labeled icon button"><button type="submit" onClick="deleteUser()">
-				Delete User <i class="trash icon"></i></button>
-			</div>
-			<div class="ui purple right labeled icon"><button type="submit">
-				Save <i class="checkmark icon"></i></button>
-			</div>
-			<div class="ui black deny button">Cancel</div>
-		</div>
+						<button class="ui gray right labeled icon button" type="submit" onClick="deleteUser()">
+							Delete User <i class="trash icon"></i>
+						</button>
+						<button class="ui blue right labeled icon button" type="submit">
+							Save <i class="checkmark icon"></i>
+						</button>
+					<div class="ui black deny button">Cancel</div>
+				</div>
 			</form>
 		</div>
-		
 	</div>
 </body>
 
