@@ -75,27 +75,48 @@
 		
 		<f:form modelAttribute="cart" action="addcart.htm" method="POST" class="ui form">
 			<h2 class="form-signin-heading">Point of Sale</h2>
-			<label for="prodName" class="sr-only">Product Name</label> 
-			<input type="hidden" id="price" class="form-control"name="price">
+			<div class="inline fields">
+						<div class="two wide field">
+							<label for="prodName" class="sr-only">Product Name</label> 
+						</div>
+						<div class="fourteen wide field">
+				            <input type="hidden" id="price" class="form-control"name="price">
 			<select class="form-control" name="inputProduct" id="inputProduct" onchange="onSelect(),calculatePrice()" >
 			<c:forEach items="${ productList }" var="p">	
 				<option value="${p.quantity}|${p.price}|${ p.pName }|${ p.id }">${ p.pName }</option>
 				</c:forEach>
 			</select>
+						</div>
+				</div>
 			
-			<label for="quantity" class="sr-only">Quantity</label> 
-				<select id="quantity" class="form-control"onchange="calculatePrice()"  ></select>
-				<label for="inputPrice" class="sr-only">Price</label> 
-				<input readonly  type="text" id="inputPrice" class="form-control"
+			<div class="inline fields">
+						<div class="two wide field">
+							<label for="quantity" class="sr-only">Quantity</label> 
+						</div>
+						<div class="fourteen wide field">
+				            <select id="quantity" class="form-control"onchange="calculatePrice()"  ></select>
+						</div>
+				</div>
+			 
+				<div class="inline fields">
+						<div class="two wide field">
+							<label for="inputPrice" class="sr-only">Price</label> 
+						</div>
+						<div class="fourteen wide field">
+				            <input readonly  type="text" id="inputPrice" class="form-control"
 				placeholder="Price" name="price" required="" autofocus="" >
+						</div>
+				</div>
+				 
+				
 		<f:input path="ID" id="inID" hidden="true"/>
 		 <f:input path="name" id="inName" hidden="true"/> 
 		<f:input path="price" id="inPrice" hidden="true"/> 
 		<f:input path="quantity" id="inQuantity" hidden="true"/>
 				
-			<input class="btn btn-lg btn-primary btn-block" id ="inSubmit" type="submit" value= "Add to cart"/>
+			<button type="submit" class="ui yellow labeled icon button" id="inSubmit" value= "Add to cart"><i class="remove circle outline icon"></i>Add to Cart </button>
 			
-		</f:form>
+		</f:form> <br>
 		<button type="button" class="ui gray labeled icon button" id="cancelCartbtn"><i class="remove circle outline icon"></i>Cancel </button>
 			
 		</div>
@@ -111,15 +132,20 @@
 			<div class="column column2">
 				<a class="hddst"> CART </a>
 				<hr/>
-						<table class="ui striped yellow fixed single line celled table">
+				
+				
+				<table class="ui striped yellow fixed single line celled table">
+				<thead>
 				<tr>
 					<th>Product ID</th>
 					<th>Product Name</th>
 					<th>Qty</th>
 					<th>Price</th>
 					<th>Total </th>
-					<th>Delete huhu</th>
+					<th> </th>
 				</tr>
+				</thead>
+				<tbody>
 				<c:forEach items='<%= request.getSession().getAttribute("cart") %>' var = "c">
 					<tr>
 					<td>${c.ID }<td>
@@ -133,12 +159,13 @@
 					
 					</tr>
 				</c:forEach>
+				</tbody>
 		</table>
-			Super Total: <%=request.getSession().getAttribute("total") %>
+			 Total: <%=request.getSession().getAttribute("total") %>
 				
 					<f:form modelAttribute="cart" action="checkout.htm" method="POST" class="form-signin">
-			<label for="checkout" class="sr-only">CHECKOUT</label> 				
-			<input class="btn btn-lg btn-primary btn-block" id ="inSubmit" type="submit" value= "Checkout"/>
+						
+			<input class="ui yellow labeled button" id ="inSubmit" type="submit" value= "Checkout"/>
 		</f:form>
 			</div>
 			
