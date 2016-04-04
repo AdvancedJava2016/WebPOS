@@ -90,32 +90,7 @@ public class ProductController {
 		}
 	}
 	
-	@RequestMapping(value = "/cashier", method = RequestMethod.GET)
-	public String cashierList(ModelMap modelMap, HttpSession session, @ModelAttribute("cart") Cart c) {
-		String userType = (String) session.getAttribute("userType");
-		if(userType == "cashier"){
-		
-		List<Cart> cartlist = (List<Cart>) session.getAttribute("cart");
-		List<Product> prodlist = productService.getAllProducts();
-		if(c==null){
-			Cart cart = new Cart();
-			modelMap.put("cart", cart);
-		}else if(cartlist!= null){
-			boolean flag = false;
-			for(Product prod : prodlist){
-				for(Cart cart: cartlist){
-					if(prod.getId() == cart.getID()){
-						prod.setQuantity(prod.getQuantity()-cart.getQuantity());
-						break;
-					}
-				}
-			}
-		}
-		modelMap.put("productList", prodlist);
-		return "productspage2";
-		}else{
-			return "login";		}
-	}
+	
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/addcart", method = RequestMethod.POST)
@@ -125,6 +100,7 @@ public class ProductController {
 		if(lst==null){
 			lst = new ArrayList<Cart>();
 			lst.add(c);
+			System.out.println("******************************"+c.getName());
 		}else{
 			boolean flag = false;
 			for(Cart cart : lst){

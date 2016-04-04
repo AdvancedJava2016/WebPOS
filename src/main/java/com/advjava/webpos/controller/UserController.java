@@ -46,7 +46,7 @@ public class UserController {
 			session.setAttribute("userType", userService.getUserType(username));
 			System.out.println("+++++++++++++++++++++"+userService.getUserType(username));
 			if(userService.getUserType(username).equals("admin") ){
-				return "adminPage";
+				return "adminPage";	
 			}else{
 				modelMap.put("productList", productService.getAllProducts());
 				Cart cart = new Cart();
