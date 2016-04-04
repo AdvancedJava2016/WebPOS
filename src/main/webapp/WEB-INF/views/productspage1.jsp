@@ -6,7 +6,7 @@
  * Copyright (C) Moneytor
  * -------------------------------------------------------------------------
  -->
- 
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,9 +24,9 @@
 	  	<title>Products Page</title>
 		
 	  	<link rel="icon" type="image/png" href="" />
-		<link rel="stylesheet" href="css/dist/semantic.css">
-		<link rel="stylesheet" href="css/normal.css">
-		<link rel="stylesheet" href="css/dist/semantic.min.css">
+		<link rel="stylesheet" href="resources/css/dist/semantic.css">
+		<link rel="stylesheet" href="resources/css/normal.css">
+		<link rel="stylesheet" href="resources/css/dist/semantic.min.css">
 
 
 		
@@ -46,10 +46,9 @@
 		<div class="ui container">
 			<div class="ui grid middle aligned center aligned">
 				<a class="navie"> Announcements </a>
-				<a class="navie" href="#" > Products </a>
-				<a class="navie" href="#" > Users </a>
-				<a class="navie"> Report </a>
-				<a class="navie" href="#" id="logoutbtn"> Log Out </a>
+				<a class="navie" href="products" > Products </a>
+				<a class="navie" href="home" > Cart </a>
+				<a class="navie" href="logout" id="logoutbtn"> Log Out </a>
 
 			</div>	
 		</div>
@@ -62,13 +61,13 @@
 			style="margin-right: 10px;"></i>New Product</div>
 		
 		<div class="content">
-			<form name="addProdForm" class="ui form" id="addProdForm">
+			<form name="addProdForm" class="ui form" id="addProdForm" method="POST" action="addProduct">
     			<div class="inline fields">
 						<div class="two wide field">
 							<label>Product Name</label>
 						</div>
 						<div class="fourteen wide field">
-				            <input type="text" name="productname" id="productname" required="true"/>
+				            <input type="text" name="pName" id="productname" required="true"/>
 						</div>
 				</div>
 
@@ -77,7 +76,7 @@
 							<label>Quantity</label>
 						</div>
 						<div class="fourteen wide field">
-				            <input type="number" name="prodqty" id="prodqty" required="true"/>
+				            <input type="number" name="quantity" id="prodqty" required="true"/>
 						</div>
 				</div>
 
@@ -86,7 +85,7 @@
 							<label>Price</label>
 						</div>
 						<div class="fourteen wide field">
-				            <input type="number" id="prodprice" name="prodprice" required="true"/>
+				            <input type="number" id="price" name="price" required="true"/>
 						</div>
 
 				</div>
@@ -94,7 +93,7 @@
 			<div class="ui divider"></div>
 			<div class="actions" style="float:right; margin-bottom:14px;">				   			
 				<button type="submit" class="ui black labeled icon button" id="saveProductbtn"><i class="add circle icon"></i> Save </button>
-				<button type="submit" class="ui gray labeled icon button" id="cancelProductbtn"><i class="remove circle outline icon"></i>Cancel </button>
+				<button type="button" class="ui gray labeled icon button" id="cancelProductbtn"><i class="remove circle outline icon"></i>Cancel </button>
 			</div>
 		</form>
 		</div>
@@ -117,31 +116,23 @@
 						<th>Price</th>
 						</tr></thead>
 					  <tbody>
-						<tr>
-						  <td>John</td>
-						  <td >Doessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</td>
-						  <td>johndoe</td>
-						</tr>
-						<tr>
-						  <td>John</td>
-						  <td>Doe</td>
-						  <td>johndoe</td>
-					    </tr>
-						<tr>
-						  <td>John</td>
-						  <td>Doe</td>
-						  <td>johndoe</td>
-						</tr>
+						<c:forEach items="${ productList }" var="p">
+							<tr>
+								<td>${ p.pName }</td>
+								<td>${ p.quantity }</td>
+								<td>${ p.price }</td>
+							</tr>
+						</c:forEach>
 					  </tbody>
 					</table>				
 			</div>	
 		</div>
 
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery-ui.min.js"></script>
-		<script src="css/dist/semantic.js"></script>
-		<script src="css/dist/semantic.min.js"></script>
-		<script src="js/index.js"></script>
+		<script src="resources/js/jquery.min.js"></script>
+		<script src="resources/js/jquery-ui.min.js"></script>
+		<script src="resources/css/dist/semantic.js"></script>
+		<script src="resources/css/dist/semantic.min.js"></script>
+		<script src="resources/js/index.js"></script>
 	</body>
 	<footer>		
 		<div class="ui middle aligned center aligned grid">

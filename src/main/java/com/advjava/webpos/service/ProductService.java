@@ -46,6 +46,10 @@ public class ProductService {
 	public Product updateProduct(Product p) {
 		return productDao.updateProduct(p);
 	}
+	
+	public Product getProductByID(int id) {
+		return productDao.getProductByProductID(id);
+	}
 
 	
 
