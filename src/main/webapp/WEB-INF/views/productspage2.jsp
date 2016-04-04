@@ -6,6 +6,10 @@
  * Copyright (C) Moneytor
  * -------------------------------------------------------------------------
  -->
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
  
 <!DOCTYPE html>
 <html>
@@ -68,6 +72,30 @@
 			style="margin-right: 10px;"></i>Add To Cart</div>
 		
 		<div class="content">
+		
+		<f:form modelAttribute="cart" action="addcart.htm" method="POST" class="ui form">
+			<h2 class="form-signin-heading">Point of Sale</h2>
+			<label for="prodName" class="sr-only">Product Name</label> 
+			<input type="hidden" id="price" class="form-control"name="price">
+			<select class="form-control" name="inputProduct" id="inputProduct" onchange="onSelect(),calculatePrice()" >
+			<c:forEach items="${ productList }" var="p">	
+				<option value="${p.quantity}|${p.price}|${ p.pName }|${ p.id }">${ p.pName }</option>
+				</c:forEach>
+			</select>
+			
+			<label for="quantity" class="sr-only">Quantity</label> 
+				<select id="quantity" class="form-control"onchange="calculatePrice()"  ></select>
+				<label for="inputPrice" class="sr-only">Price</label> 
+				<input readonly  type="text" id="inputPrice" class="form-control"
+				placeholder="Price" name="price" required="" autofocus="" >
+		<f:input path="ID" id="inID" hidden="true"/>
+		 <f:input path="name" id="inName" hidden="true"/> 
+		<f:input path="price" id="inPrice" hidden="true"/> 
+		<f:input path="quantity" id="inQuantity" hidden="true"/>
+				
+			<input class="btn btn-lg btn-primary btn-block" id ="inSubmit" type="submit" value= "Add to cart"/>
+		</f:form>
+		
 			<form name="addCartForm" class="ui form" id="addCartForm">
     			<div class="inline fields">
 						<div class="two wide field">
