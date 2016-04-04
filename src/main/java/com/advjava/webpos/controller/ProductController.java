@@ -148,7 +148,7 @@ public class ProductController {
 		modelMap.put("productList", prodlist);
 		session.setAttribute("cart", lst);
 		session.setAttribute("total", getTotal(lst));
-		return "cashier";
+		return "cart";
 	}
 	
 	public float getTotal(List<Cart> lst){
@@ -226,16 +226,16 @@ public class ProductController {
 			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++"+pur.getCashier_id());
 			if (purchaseService.createPurchase(pur) != null) {
 				modelMap.put("productList", productService.getAllProducts());
-				return "cashier";
+				return "cart";
 			} else {
 				modelMap.put("productList", productService.getAllProducts());
 				modelMap.put("error", "Edit Product Failed!");
-				return "cashier";
+				return "cart";
 			}
 			
 			
 		}		
-			return "cashier";
+			return "cart";
 	
 	}
 }

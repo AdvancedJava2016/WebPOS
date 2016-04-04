@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html>
 <head>
@@ -10,6 +12,7 @@
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/jquery-ui.min.js"></script>
 <script src="resources/js/semantic.js"></script>
+<script src="resources/js/user.js"></script>
 
 <style>
 </style>
@@ -29,29 +32,27 @@
 				<i class="circular purple inverted cart icon"></i>
 			</h3>
 			<table class="ui black fixed padded very piled raised celled table">
-				<thead>
+				<tr>
+					<th>Product ID</th>
+					<th>Product Name</th>
+					<th>Qty</th>
+					<th>Price</th>
+					<th>Total </th>
+					<th>Delete huhu</th>
+				</tr>
+				<c:forEach items='<%= request.getSession().getAttribute("cart") %>' var = "c">
 					<tr>
-						<th>Product Name</th>
-						<th>Quantity</th>
-						<th>Price</th>
+					<td>${c.ID }<td>
+					<td>${c.name }<td>
+					<td>${c.price }<td>
+					<td>${c.quantity }<td>
+					<td>total: ${c.price * c.quantity }<td>
+					<td> <a href="./remove.htm?id= ${c.ID }" onClick="return confirm('Are you sure?')"> 
+							Remove</a>
+					</td>
+					
 					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>ASUS Zenfone 2 ZE551ML 4/64</td>
-						<td>2</td>
-						<td>P 14,995.00</td>
-					</tr>
-					<tr>
-						<td>iPhone 6s Plus 16GB (Rose Gold)</td>
-						<td>4</td>
-						<td>P 43,990.00</td>
-					</tr>
-					<tr>
-						<td>My Phone Agua Rio</td>
-						<td>29</td>
-						<td>P 4,900.00</td>
-				</tbody>
+				</c:forEach>
 				<tfoot>
 					<tr>
 						<th colspan="2"><b>TOTAL:</b></th>
@@ -65,35 +66,33 @@
 		<div class="five wide column">
 			<div style="width: 80%;"
 				class="ui piled very padded text container segment">
-				<form class="ui form">
-					<div class="field">
-						<label>Product</label> <input type="text" name="first-name">
-					</div>
-					<div class="field">
-						<label>Quantity</label> <input type="number" name="last-name">
-					</div>
-					<div class="field">
-						<label>Price</label> <input type="text" name="password">
-					</div>
-					<button class="ui purple fluid center aligned labeled icon button"
-						type="submit">
-						<i class="add to cart icon"></i>Add To Cart
-					</button>
-				</form>
-			</div>
-			<div>
-				<form class="ui form">
-					<div class="ui action input fluid">
-						<input type="text" placeholder="PHP 0.00">
-						<button class="ui purple right labeled icon button">
-							<i class="dollar icon"></i> Checkout
-						</button>
-					</div>
-				</form>
+				<f:form modelAttribute="cart" action="addcart.htm" method="POST" class="form-signin">
+			<h2 class="form-signin-heading">Point of Sale</h2>
+			<label for="prodName" class="sr-only">Product Name</label> 
+			<input type="hidden" id="price" class="form-control"name="price">
+			<select class="form-control" name="inputProduct" id="inputProduct" onchange="onSelect(),calculatePrice()" >
+			<c:forEach items="${ productList }" var="p">	
+				<option value="${p.quantity}|${p.price}|${ p.pName }|${ p.id }">${ p.pName }</option>
+				</c:forEach>
+			</select>
+			
+			<label for="quantity" class="sr-only">Quantity</label> 
+				<select id="quantity" class="form-control"onchange="calculatePrice()"  ></select>
+				<label for="inputPrice" class="sr-only">Price</label> 
+				<input readonly  type="text" id="inputPrice" class="form-control"
+				placeholder="Price" name="price" required="" autofocus="" >
+		<f:input path="ID" id="inID" hidden="true"/>
+		 <f:input path="name" id="inName" hidden="true"/> 
+		<f:input path="price" id="inPrice" hidden="true"/> 
+		<f:input path="quantity" id="inQuantity" hidden="true"/>
+				
+			<input class="btn btn-lg btn-primary btn-block" id ="inSubmit" type="submit" value= "Add to cart"/>
+		</f:form>
 				<div class="ui left action input fluid">
-					<button class="ui button">
-						<i class="cart icon" disabled></i> Change
-					</button>
+					<f:form modelAttribute="cart" action="checkout.htm" method="POST" class="form-signin">
+			<label for="checkout" class="sr-only">CHECKOUT</label> 				
+			<input class="btn btn-lg btn-primary btn-block" id ="inSubmit" type="submit" value= "Checkout"/>
+		</f:form>
 					<input type="text" disabled>
 				</div>
 			</div>
