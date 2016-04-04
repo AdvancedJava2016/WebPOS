@@ -24,9 +24,9 @@
 	  	<title>Products Page</title>
 		
 	  	<link rel="icon" type="image/png" href="" />
-		<link rel="stylesheet" href="resources/css/dist/semantic.css">
-		<link rel="stylesheet" href="resources/css/normal.css">
-		<link rel="stylesheet" href="resources/css/dist/semantic.min.css">
+		<link rel="stylesheet" href="css/dist/semantic.css">
+		<link rel="stylesheet" href="css/normal.css">
+		<link rel="stylesheet" href="css/dist/semantic.min.css">
 
 
 		
@@ -46,10 +46,10 @@
 		<div class="ui container">
 			<div class="ui grid middle aligned center aligned">
 				<a class="navie"> Announcements </a>
-				<a class="navie" href="products" > Products </a>
-				<a class="navie" href="adminPage" > Users </a>
-				<a class="navie" href="reports"> Report </a>
-				<a class="navie" href="logout" id="logoutbtn"> Log Out </a>
+				<a class="navie" href="#" > Products </a>
+				<a class="navie" href="#" > Users </a>
+				<a class="navie"> Report </a>
+				<a class="navie" href="#" id="logoutbtn"> Log Out </a>
 
 			</div>	
 		</div>
@@ -137,11 +137,11 @@
 			</div>	
 		</div>
 
-		<script src="resources/js/jquery.min.js"></script>
-		<script src="resources/js/jquery-ui.min.js"></script>
-		<script src="resources/css/dist/semantic.js"></script>
-		<script src="resources/css/dist/semantic.min.js"></script>
-		<script src="resources/js/index.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
+		<script src="css/dist/semantic.js"></script>
+		<script src="css/dist/semantic.min.js"></script>
+		<script src="js/index.js"></script>
 	</body>
 	<footer>		
 		<div class="ui middle aligned center aligned grid">
