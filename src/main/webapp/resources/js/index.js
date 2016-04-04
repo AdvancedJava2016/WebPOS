@@ -82,3 +82,6 @@ $('#prodsalesbtn').click(function(){
 	$('#productsales').show();
 	$('#cashsales').hide();
 });
+$('.ui.dropdown')
+.dropdown()
+;

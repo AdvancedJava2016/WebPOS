@@ -46,7 +46,7 @@
 			<div class="ui grid middle aligned center aligned">
 				<a class="navie"> Announcements </a>
 				<a class="navie" href="products" > Products </a>
-				<a class="navie" href="#" > Users </a>
+				<a class="navie" href="adminPage" > Users </a>
 				<a class="navie" href="reports"> Report </a>
 				<a class="navie" href="logout" id="logoutbtn"> Log Out </a>
 
@@ -115,8 +115,8 @@
 				</div>
 			<div class="ui divider"></div>
 			<div class="actions" style="float:right; margin-bottom:14px;">				   			
-				<button type="submit" class="ui black labeled icon button" id="saveUserbtn"><i class="add circle icon"></i> Save </button>
-				<button type="submit" class="ui gray labeled icon button" id="cancelUserbtn"><i class="remove circle outline icon"></i>Cancel </button>
+				<button type="submit" class="ui black labeled icon button" id="saveUserbtn"><i class="add user icon"></i> Save </button>
+				<button type="submit" class="ui gray labeled icon button" id="cancelUserbtn"><i class="remove outline icon"></i>Cancel </button>
 			</div>
 			</form>
 		</div>
@@ -131,15 +131,9 @@
 		
 		<div class="content">
 			<form name="editUserForm" class="ui form" id="editUserForm" action="editUser" method="POST">
-    			<div class="inline fields">
-					<div class="two wide field">
-						<label>ID</label>
-					</div>
 					<div class="fourteen wide field">
-						<input type="text" name="id" id="eID" required="true" hidden/>
+						<input type="hidden" name="id" id="eID" required="true" hidden/>
 					</div>
-				</div>
-				
 				<div class="inline fields">
 					<div class="two wide field">
 						<label>First Name</label>
@@ -193,9 +187,9 @@
 				</div>
 			<div class="ui divider"></div>
 			<div class="actions" style="float:right; margin-bottom:14px;">				   			
-				<button type="submit" class="ui black labeled icon button" id="edeleteUserbtn" onClick="deleteUser()"><i class=""></i> Delete </button>
-				<button type="submit" class="ui black labeled icon button" id="esaveUserbtn"><i class="add circle icon"></i> Save </button>
-				<button type="reset" class="ui gray labeled icon button" id="ecancelUserbtn"><i class="remove circle outline icon"></i>Cancel </button>
+				<button type="submit" class="ui black labeled icon button" id="esaveUserbtn"><i class="add user icon"></i> Save </button>
+				<button type="submit" class="ui black labeled icon button" id="edeleteUserbtn" onClick="deleteUser()"><i class="remove user icon"></i> Delete </button>
+				<button type="reset" class="ui gray labeled icon button" id="ecancelUserbtn"><i class="remove outline icon"></i>Cancel </button>
 			</div>
 			</form>
 		</div>
