@@ -148,11 +148,11 @@
 				<tbody>
 				<c:forEach items='<%= request.getSession().getAttribute("cart") %>' var = "c">
 					<tr>
-					<td>${c.ID }<td>
-					<td>${c.name }<td>
-					<td>${c.price }<td>
-					<td>${c.quantity }<td>
-					<td>total: ${c.price * c.quantity }<td>
+					<td>${c.ID }</td>
+					<td>${c.name }</td>
+					<td>${c.price }</td>
+					<td>${c.quantity }</td>
+					<td>total: ${c.price * c.quantity }</td>
 					<td> <a href="./remove.htm?id= ${c.ID }" onClick="return confirm('Are you sure?')"> 
 							Remove</a>
 					</td>
