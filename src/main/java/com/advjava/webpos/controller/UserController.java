@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.advjava.webpos.entity.Cart;
 import com.advjava.webpos.entity.User;
 import com.advjava.webpos.service.ProductService;
 import com.advjava.webpos.service.UserService;
@@ -36,7 +37,9 @@ public class UserController {
 			return "adminpg";
 		}else{
 			modelMap.put("productList", productService.getAllProducts());
-			return "cart";
+			Cart cart = new Cart();
+			modelMap.put("cart", cart);
+			return "cashier";
 		}
 	}
 	
@@ -53,7 +56,9 @@ public class UserController {
 				return "adminpg";
 			}else{
 				modelMap.put("productList", productService.getAllProducts());
-				return "cart";
+				Cart cart = new Cart();
+				modelMap.put("cart", cart);
+				return "cashier";
 			}
 		} else {
 			modelMap.put("error", "Invalid UserName / Password");
