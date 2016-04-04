@@ -37,6 +37,8 @@ public class UserController {
 			return "adminpg";
 		}else{
 			modelMap.put("productList", productService.getAllProducts());
+			Cart cart = new Cart();
+			modelMap.put("cart", cart);
 			return "cart";
 		}
 	}
@@ -55,6 +57,8 @@ public class UserController {
 				return "adminpg";
 			}else{
 				modelMap.put("productList", productService.getAllProducts());
+				Cart cart = new Cart();
+				modelMap.put("cart", cart);
 				return "cart";
 			}
 		} else {
