@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <title>Products</title>
 
 <link rel="stylesheet" type="text/css" href="resources/js/semantic.css">
@@ -21,8 +21,6 @@
 			<b>WEBPOS</b>
 		</h4>
 		<div class="right menu">
-		<a class="item" href="products" ><i class="cubes icon"></i>Products</a> <a
-				class="item" href="home" ><i class="cart icon"></i>Cart</a>
 			<a class="item" href="logout">Log Out</a>
 		</div>
 	</div>
@@ -55,16 +53,16 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${ productList }" var="p">
-							<tr>
-								<td>${ p.pName }</td>
-								<td>${ p.quantity }</td>
-								<td>${ p.price }</td>
-							</tr>
+						<tr>
+							<td>${ p.pName }</td>
+							<td>${ p.quantity }</td>
+							<td>${ p.price }</td>
+						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		
+
 		<!-- CART -->
 		<div id="cart" hidden>
 			<table class="ui black fixed padded very piled raised celled table"
@@ -75,98 +73,104 @@
 						<th>Quantity</th>
 						<th>Price</th>
 						<th>Total Price</th>
-						<th>Remove</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items='<%= request.getSession().getAttribute("cart") %>' var = "c">
+					<c:forEach items='<%=request.getSession().getAttribute("cart")%>'
+						var="c">
 						<tr>
-							<td>${c.ID }<td>
-							<td>${c.name }<td>
-							<td>${c.price }<td>
-							<td>${c.quantity }<td>
-							<td>total: ${c.price * c.quantity }<td>
-							<td> <a href="./remove.htm?id= ${c.ID }" onClick="return confirm('Are you sure?')"> </td>
+							<td>${c.name }
+							</td>
+							<td>${c.price }
+							</td>
+							<td>${c.quantity }
+							</td>
+							<td>${c.price * c.quantity }
+							</td>
+							<td><a href="./remove.htm?id= ${c.ID }"
+								onClick="return confirm('Are you sure?')">Remove</td>
 						</tr>
-				</c:forEach>
+					</c:forEach>
 				</tbody>
 				<tfoot>
 					<tr>
-						<th colspan="2"><b>TOTAL:</b></th>
-						<th colspan="1"><b><%=request.getSession().getAttribute("total") %></b></th>
+						<th colspan="3"><b>TOTAL:</b></th>
+						<th colspan="2"><b><%=request.getSession().getAttribute("total")%></b></th>
 					</tr>
 
 				</tfoot>
 			</table>
-			
+
 			<!-- ADD ITEMS TO CART -->
 			<div class="ui container segment"
-				style="padding: 15px !important; width:70%">
+				style="padding: 15px !important; width: 70%">
 				<div class="ui form">
-                <f:form modelAttribute="cart" action="addcart.htm" method="POST">
-					<div class="four fields">
-						<div class="field">
-							<label>Product Name</label>
-                            <input type="hidden" id="price" class="form-control"name="price">
-			                 <select class="form-control" name="inputProduct" id="inputProduct" onchange="onSelect(),calculatePrice()" >
-                             <c:forEach items="${ productList }" var="p">	
-                            <option value="${p.quantity}|${p.price}|${ p.pName }|${ p.id }">${ p.pName }</option>
-                            </c:forEach>
-                        </select>
-                        
-						</div>
-						<div class="field">
-							<label>Quantity</label>
-                            <select id="quantity" class="form-control"onchange="calculatePrice()"  ></select>
-						</div>
-						<div class="field">
-							<label>Price</label>
-                            <input readonly  type="text" id="inputPrice" class="form-control"
-				placeholder="Price" name="price" required="" autofocus="" >
-                <f:input path="ID" id="inID" hidden="true"/>
-		 <f:input path="name" id="inName" hidden="true"/> 
-		<f:input path="price" id="inPrice" hidden="true"/> 
-		<f:input path="quantity" id="inQuantity" hidden="true"/>
-						</div>
-						<div class="field">
-							<input class="btn btn-lg btn-primary btn-block" id ="inSubmit" type="submit" value= "Add to cart"/>
-								<i class="add to cart icon"></i>Add To Cart
-							
-							
-                                </f:form>
-								<f:form modelAttribute="cart" action="checkout.htm" method="POST" class="form-signin">
-			<label for="checkout" class="sr-only">CHECKOUT</label> 				
-			<input class="btn btn-lg btn-primary btn-block" id ="inSubmit" type="submit" value= "Checkout"/>
-		</f:form>
-		
-							
-						</div>
-					</div>
+					<f:form modelAttribute="cart" action="addcart.htm" method="POST">
+						<div class="four fields">
+							<div class="field">
+								<label>Product Name</label> <input type="hidden" id="price"
+									class="form-control" name="price"> <select
+									class="form-control" name="inputProduct" id="inputProduct"
+									onchange="onSelect(),calculatePrice()">
+									<c:forEach items="${ productList }" var="p">
+										<option
+											value="${p.quantity}|${p.price}|${ p.pName }|${ p.id }">${ p.pName }</option>
+									</c:forEach>
+								</select>
+
+							</div>
+							<div class="field">
+								<label>Quantity</label> <select id="quantity"
+									class="form-control" onchange="calculatePrice()"></select>
+							</div>
+							<div class="field">
+								<label>Price</label> <input readonly type="text" id="inputPrice"
+									class="form-control" placeholder="Price" name="price"
+									required="" autofocus="">
+								<f:input path="ID" id="inID" hidden="true" />
+								<f:input path="name" id="inName" hidden="true" />
+								<f:input path="price" id="inPrice" hidden="true" />
+								<f:input path="quantity" id="inQuantity" hidden="true" />
+							</div>
+							<div class="field">
+								<input class="ui blue button" id="inSubmit" type="submit"
+									value="Add to Cart" />
+					</f:form>
+					<f:form modelAttribute="cart" action="checkout.htm" method="POST"
+						class="form-signin">
+						<input class="ui button" id="inSubmit"
+							type="submit" value="Checkout" />
+					</f:form>
+
+
 				</div>
 			</div>
-			<!-- END ADD TO CART MODAL -->
-			
-			<!-- CHECKOUT MODAL -->
-			<div id="checkout" class="ui basic small modal">
-				<div style="width: 50%"
-					class="ui piled very padded text container segment">
-					<form class="ui form">
-						<div class="field">
-							<label>Cash</label> <input type="text" id="pName">
-						</div>
-						<div class="field">
-							<label>Change</label> <input type="number" disabled>
-						</div>
-						<button class="ui blue fluid center aligned labeled icon button"
-							type="submit">
-							<i class="add icon"></i>Checkout
-						</button>
-					</form>
-				</div>
-			</div>
-			<!-- END CHECKOUT MODAL -->
-			
 		</div>
+	</div>
+	<!-- END ADD TO CART MODAL -->
+
+	<!-- CHECKOUT MODAL -->
+	<div id="checkout" class="ui basic small modal">
+		<div style="width: 50%"
+			class="ui piled very padded text container segment">
+			<form class="ui form">
+				<div class="field">
+					<label>Cash</label> <input type="text" id="pName">
+				</div>
+				<div class="field">
+					<label>Change</label> <input type="number" disabled>
+				</div>
+				<button class="ui blue fluid center aligned labeled icon button"
+					type="submit">
+					<i class="add icon"></i>Checkout
+				</button>
+			</form>
+		</div>
+	</div>
+	<!-- END CHECKOUT MODAL -->
+
+	</div>
 	</div>
 
 	<!-- ADD PRODUCT MODAL -->
